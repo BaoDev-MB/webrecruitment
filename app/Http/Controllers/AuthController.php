@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ActiveAcount;
 use App\Mail\ForgetPass;
 use App\Mail\ForgetPass1;
 use App\User;
@@ -77,9 +78,10 @@ class AuthController extends Controller
         $time = now();
         $hash = md5($key . $time);
          echo($request->input('email') ."           " .$hash."     ".$request->input('name') );
-       
-         Mail::to($request->input('email'))->send(new ForgetPass
+
+         Mail::to($request->input('email'))->send(new ActiveAcount
         ($request->input('email'), $hash, $request->input('name')));
+
         $user->random_key = $hash;
         $user->key_time = Carbon::now();
         $user->save();

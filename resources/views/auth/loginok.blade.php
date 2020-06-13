@@ -303,7 +303,7 @@
         <div class="center">
             <h2 class="form-title" >ĐĂNG NHẬP THÀNH CÔNG</h2>
             <div class="alert alert-danger">Hệ thống sẽ chuyển về trang chủ sau <span id="countdown">5</span> giây.</div>
-            <p align="right">Về <a href="{{route('home.index')}}">Trang chủ</a></p>
+            <p align="right">Về <a href="{{route('welcome')}}">Trang chủ</a></p>
 
         </div>
     </div>
@@ -315,7 +315,7 @@
         seconds = seconds - 1;
         if (seconds < 0) {
             // Chnage your redirection link here
-            window.location = "{{route('home.index')}}";
+            window.location = "{{route('welcome')}}";
         } else {
             // Update remaining seconds
             document.getElementById("countdown").innerHTML = seconds;

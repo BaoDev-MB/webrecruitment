@@ -1,8 +1,12 @@
 <?php
+Route::get( '/', function (){
+    return view("welcome");
+} )->name( 'welcome' );
 
 Route::get( 'login', 'AuthController@login' )->name( 'login' );
 Route::post( 'login', 'AuthController@doLogin' )->name( 'login' );
 Route::post( 'signup', 'AuthController@doSignup' )->name( 'signup' );
+Route::get( 'register', 'AuthController@login' )->name( 'register' );
 Route::post( 'profile', 'AuthController@doProfile' )->name( 'profile' );
 Route::get( 'logout', 'AuthController@doLogout' )->name( 'logout' );
 Route::get( 'profile', 'AuthController@profile' )->name( 'profile' );
