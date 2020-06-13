@@ -19,7 +19,7 @@
     <p>Xin Chào <strong> {{$name}}</strong></p>
     <br/>
     <p>
-        Tài khoản của bạn vừa được yêu cầu lấy lại mật khẩu.
+        Tài khoản của bạn vừa được yêu cầu xác nhận.
         <br/>Nếu bạn thực sự thực hiện yêu cầu trên vui lòng nhấn <a href="{{route('confirmemail',['email'=>$email,'key'=>$key])}}"> vào đây</a>. Hoặc copy đường link sau và thực hiện truy cập trên trình duyệt của bạn.
         <br/>{{route('confirmemail',['email'=>$email,'key'=>$key])}}
         <br/>Ngược lại nếu bạn không thực hiện yêu cầu trên bạn có thể bỏ qua email này.
