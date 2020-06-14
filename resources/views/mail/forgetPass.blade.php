@@ -7,7 +7,7 @@
     border-radius: 8px 8px 0 0;
     margin-top: 20px;
     margin-bottom: 0px;
-">Xác nhận tài khoản</h2>
+">Quên Mật Khẩu</h2>
 <div style="
     border: solid 1px #b7b7b7;
     margin-top:  0px;
