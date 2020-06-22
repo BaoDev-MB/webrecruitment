@@ -152,7 +152,8 @@ class AuthController extends Controller
 
     public function forgetPass()
     {
-        return \view('auth.confirmemail');
+        return 'forget';
+        // return view('auth.confirmemail');
     }
 
     public function doForgetPass(Request $request)
@@ -165,8 +166,7 @@ class AuthController extends Controller
             $key = openssl_random_pseudo_bytes(200);
             $time = now();
             $hash = md5($key . $time);
-            Mail::to($request->input('email'))->send(new ForgetPass
-            ($request->input('email'), $hash, $request->input('name')));
+            Mail::to($request->input('email'))->send(new ForgetPass($request->input('email'), $hash, $request->input('name')));
             $u[0]->random_key = $hash;
             $u[0]->key_time = Carbon::now();
             $u[0]->save();
@@ -174,7 +174,7 @@ class AuthController extends Controller
 
             return \redirect()->back()->with('ok', $mess);
 
-//			return view('auth.confirmemail')->with( 'ok', 'Bạn đăng ký thành công vui lòng check Email để kích hoạt tài khoản' );
+            //			return view('auth.confirmemail')->with( 'ok', 'Bạn đăng ký thành công vui lòng check Email để kích hoạt tài khoản' );
         } else {
             return \redirect()->back()->withErrors('Email không tồn tại, hoặc chưa đăng ký.');
         }
@@ -197,7 +197,6 @@ class AuthController extends Controller
                     'email' => $email,
                     'key' => $key,
                 ]);
-
             } else {
                 return \view('auth.errormail')->with('ok', 'Mail đã hết hạn sử dụng');
             }
@@ -222,7 +221,4 @@ class AuthController extends Controller
             return redirect('login')->with('ok', 'Password đã được thay đổi');
         }
     }
-
-
-
 }

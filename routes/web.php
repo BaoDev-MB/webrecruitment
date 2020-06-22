@@ -1,8 +1,8 @@
 <?php
 
 Route::get('/', function () {
-    return view("pages.auth");
-})->name('welcome');
+    return view("index");
+})->name('index');
 
 Route::get('login', 'AuthController@login')->name('login');
 Route::post('login', 'AuthController@doLogin')->name('login');
