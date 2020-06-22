@@ -18,9 +18,13 @@ class AuthController extends Controller
 {
     public function login()
     {
-        return view('auth.login');
+        return view('pages.auth');
     }
-
+    public function signup()
+    {
+        Session::put('signup',true);
+        return redirect('login');
+    }
     public function doLogin(Request $r)
     {
         $r->validate([
@@ -37,8 +41,7 @@ class AuthController extends Controller
                     ->where('id', '=', $u->id)
                     ->where('active', '=', '1')->first();
                 Session::put('auth', $u);
-
-                return view('auth.loginok');
+                return redirect('/');
             } else {
                 return redirect()->back()
                     ->withInput($r->only('email'))
@@ -67,8 +70,6 @@ class AuthController extends Controller
             'email' => 'email|unique:users',
             'pass' => 'required|min:8',
             'repass' => 'required|same:pass',
-            'phone' => '',
-            'gender' => '',
         ]);
         Session::forget('signup');
 
@@ -114,7 +115,7 @@ class AuthController extends Controller
     {
         Session::forget('auth');
 
-        return \redirect('/');
+        return redirect('/');
     }
 
     public function editProfile()
