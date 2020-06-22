@@ -79,7 +79,7 @@
             <!-- Register -->
             <div class="tab-content" id="tab2" style="display: none;">
 
-                <form method="post" action="{{ url('register')}}"class="register">
+                <form method="post" action="{{ url('register')}}" class="register">
 
                     <p class="form-row form-row-wide">
                         <label for="username2">Username:
