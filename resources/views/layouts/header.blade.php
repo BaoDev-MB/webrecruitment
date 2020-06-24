@@ -59,7 +59,7 @@
 
                 <ul class="float-right">
                     @if(Session::has('auth'))
-                        <li><a href="#"><i class="fa fa-user"></i>{{Session::get('auth')->name}}</a>
+                        <li><a href="#"><i class="fa fa-user"></i>{{Session::get('auth')->fullname}}</a>
                             <ul>
                                 <li>
                                 <li><a href="">Profile</a></li>
