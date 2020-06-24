@@ -28,7 +28,7 @@ class LoginController extends Controller
         if (count($users) == 1) {
             $u = $users[0];
             if ($u->email == $r->get('email') && Hash::check($r->get('pass'), $u->password)) {
-                $u = User::select('id', 'fullname', 'email', 'password', 'group', 'avt', 'phone', 'gender', 'studentcode', 'dateofbirth')
+                $u = User::select('id', 'first_name', 'group')
                     ->where('id', '=', $u->id)
                     ->where('active', '=', '1')->first();
                 Session::put('auth', $u);
