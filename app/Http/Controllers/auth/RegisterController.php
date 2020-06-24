@@ -23,11 +23,11 @@ class RegisterController extends Controller
     {
         Session::put('signup', true);
         $u = $request->validate([
-            'full_name' => 'required|min:3|max:50',
-            'email' => 'required|email|unique:users',
-            'pass' => 'required|min:8',
-            'repass' => 'required|same:pass',
-        ]);
+            'r_full_name' => 'required|min:3|max:50',
+            'r_email' => 'required|email|unique:users,email',
+            'r_pass' => 'required|min:8',
+            'r_repass' => 'required|same:pass',
+        ],$this->messages());
         Session::forget('signup');
 
         $user = new User($u);
@@ -44,10 +44,10 @@ class RegisterController extends Controller
         $user->save();
 
         return redirect('login')->with('ok', 'Bạn đăng ký thành công vui lòng check Email để kích hoạt tài khoản');
-    
+
 
         return $request->email + " " + $request->password;
-    
+
     }
 
     public function register()
@@ -81,5 +81,20 @@ class RegisterController extends Controller
         } else {
             return redirect('login')->withErrors(['mes' => 'Xác nhận email không thành công! Email hoặc mã xác thực không đúng. ']);
         }
+    }
+    private function messages()
+    {
+        return [
+            'r_full_name.required' => 'Bạn cần nhập họ tên',
+            'r_full_name.min' => 'Họ tên cần lớn hơn 3 kí tự',
+            'r_full_name.max' => 'Họ tên cần bé hơn 50 kí tự',
+            'r_email.required' => 'Bạn cần phải nhập Email.',
+            'r_email.email' => 'Định dạng Email bị sai.',
+            'r_email.unique'=>'Email đã tồn tại',
+            'r_pass.required' => 'Bạn cần phải nhập Password.',
+            'r_pass.min' => 'Password phải nhiều hơn 8 ký tự.',
+            'r_repass.same' => 'RePassword không trùng với password',
+            'r_pass.required' => 'Bạn cần nhập Repassword',
+        ];
     }
 }

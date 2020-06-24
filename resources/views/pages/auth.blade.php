@@ -42,6 +42,9 @@
             <div class="tab-content" id="tab1" style="display: none;">
                 <form method="POST" action="{{url('login')}}" class="login">
                     @csrf
+                    @error('mes')
+                    <small class="form-text text-danger">{{ $message }}</small>
+                    @enderror
                     <p class="form-row form-row-wide">
                         <label for="email">Email:
                             <i class="ln ln-icon-Email"></i>
@@ -127,7 +130,7 @@
 @endsection()
 
 
-<!-- Script to active register 
+<!-- Script to active register
     ================================================== -->
 @section('lastScript')
 @if ($register ?? ''!='')
