@@ -18,9 +18,13 @@ class AuthController extends Controller
 {
     public function login()
     {
-        return view('auth.login');
+        return view('pages.auth');
     }
-
+    public function signup()
+    {
+        Session::put('signup',true);
+        return redirect('login');
+    }
     public function doLogin(Request $r)
     {
         $r->validate([
@@ -37,8 +41,7 @@ class AuthController extends Controller
                     ->where('id', '=', $u->id)
                     ->where('active', '=', '1')->first();
                 Session::put('auth', $u);
-
-                return view('auth.loginok');
+                return redirect('/');
             } else {
                 return redirect()->back()
                     ->withInput($r->only('email'))
@@ -67,8 +70,6 @@ class AuthController extends Controller
             'email' => 'email|unique:users',
             'pass' => 'required|min:8',
             'repass' => 'required|same:pass',
-            'phone' => '',
-            'gender' => '',
         ]);
         Session::forget('signup');
 
@@ -114,7 +115,7 @@ class AuthController extends Controller
     {
         Session::forget('auth');
 
-        return \redirect('/');
+        return redirect('/');
     }
 
     public function editProfile()
@@ -152,7 +153,8 @@ class AuthController extends Controller
 
     public function forgetPass()
     {
-        return \view('auth.confirmemail');
+        return 'forget';
+        // return view('auth.confirmemail');
     }
 
     public function doForgetPass(Request $request)
@@ -165,8 +167,7 @@ class AuthController extends Controller
             $key = openssl_random_pseudo_bytes(200);
             $time = now();
             $hash = md5($key . $time);
-            Mail::to($request->input('email'))->send(new ForgetPass
-            ($request->input('email'), $hash, $request->input('name')));
+            Mail::to($request->input('email'))->send(new ForgetPass($request->input('email'), $hash, $request->input('name')));
             $u[0]->random_key = $hash;
             $u[0]->key_time = Carbon::now();
             $u[0]->save();
@@ -174,7 +175,7 @@ class AuthController extends Controller
 
             return \redirect()->back()->with('ok', $mess);
 
-//			return view('auth.confirmemail')->with( 'ok', 'Bạn đăng ký thành công vui lòng check Email để kích hoạt tài khoản' );
+            //			return view('auth.confirmemail')->with( 'ok', 'Bạn đăng ký thành công vui lòng check Email để kích hoạt tài khoản' );
         } else {
             return \redirect()->back()->withErrors('Email không tồn tại, hoặc chưa đăng ký.');
         }
@@ -197,7 +198,6 @@ class AuthController extends Controller
                     'email' => $email,
                     'key' => $key,
                 ]);
-
             } else {
                 return \view('auth.errormail')->with('ok', 'Mail đã hết hạn sử dụng');
             }
@@ -222,7 +222,4 @@ class AuthController extends Controller
             return redirect('login')->with('ok', 'Password đã được thay đổi');
         }
     }
-
-
-
 }

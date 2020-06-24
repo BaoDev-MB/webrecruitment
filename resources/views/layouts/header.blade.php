@@ -1,26 +1,25 @@
-
 <!-- Header
 ================================================== -->
 <header class="{{$transparent}} sticky-header">
     <div class="container">
         <div class="sixteen columns">
-        
+
             <!-- Logo -->
             <div id="logo">
                 @if ($transparent != '')
-                <h1><a href="/"><img src="images/logo2.png" alt="Work Scout" /></a></h1>
+                    <h1><a href="/"><img src="images/logo2.png" alt="Work Scout"/></a></h1>
                 @else
-                <h1><a href="/"><img src="images/logo.png" alt="Work Scout" /></a></h1>
+                    <h1><a href="/"><img src="images/logo.png" alt="Work Scout"/></a></h1>
                 @endif
             </div>
-    
+
             <!-- Menu -->
             <nav id="navigation" class="menu">
                 <ul id="responsive">
-    
+
                     <li><a id="current" href="index-2.html">Home</a>
                     </li>
-    
+
                     <li><a href="#">Pages</a>
                         <ul>
                             <li><a href="job-page.html">Job Page</a></li>
@@ -33,7 +32,7 @@
                             <li><a href="contact.html">Contact</a></li>
                         </ul>
                     </li>
-    
+
                     <li><a href="#">Browse Listings</a>
                         <ul>
                             <li><a href="browse-jobs.html">Browse Jobs</a></li>
@@ -41,7 +40,7 @@
                             <li><a href="browse-categories.html">Browse Categories</a></li>
                         </ul>
                     </li>
-    
+
                     <li><a href="#">Dashboard</a>
                         <ul>
                             <li><a href="dashboard.html">Dashboard</a></li>
@@ -56,21 +55,32 @@
                         </ul>
                     </li>
                 </ul>
-    
-    
+
+
                 <ul class="float-right">
-                    <li><a href="my-account.html#tab2"><i class="fa fa-user"></i> Sign Up</a></li>
-                    <li><a href="my-account.html"><i class="fa fa-lock"></i> Log In</a></li>
+                    @if(Session::has('auth'))
+                        <li><a href="#"><i class="fa fa-user"></i>{{Session::get('auth')->name}}</a>
+                            <ul>
+                                <li>
+                                <li><a href="">Profile</a></li>
+                                <li><a href="{{route('logout')}}">Logout</a></li>
+                                </li>
+                            </ul>
+                        </li>
+                    @else
+                        <li><a href="{{route('register')}}"><i class="fa fa-user"></i> Sign Up</a></li>
+                        <li><a href="{{route('login')}}"><i class="fa fa-lock"></i> Log In</a></li>
+                    @endif
                 </ul>
-    
+
             </nav>
-    
+
             <!-- Navigation -->
             <div id="mobile-navigation">
                 <a href="#menu" class="menu-trigger"><i class="fa fa-reorder"></i></a>
             </div>
-    
+
         </div>
     </div>
-    </header>
-    <div class="clearfix"></div>
+</header>
+<div class="clearfix"></div>
