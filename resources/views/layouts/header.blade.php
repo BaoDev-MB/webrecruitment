@@ -59,7 +59,7 @@
 
                 <ul class="float-right">
                     @if(Session::has('auth'))
-                        <li><a href="{{route('login')}}"><i class="fa fa-user"></i>{{Session::get('auth')->name}}</a>
+                        <li><a href="#"><i class="fa fa-user"></i>{{Session::get('auth')->name}}</a>
                             <ul>
                                 <li>
                                 <li><a href="">Profile</a></li>
@@ -68,7 +68,7 @@
                             </ul>
                         </li>
                     @else
-                        <li><a href="{{route('signup')}}"><i class="fa fa-user"></i> Sign Up</a></li>
+                        <li><a href="{{route('register')}}"><i class="fa fa-user"></i> Sign Up</a></li>
                         <li><a href="{{route('login')}}"><i class="fa fa-lock"></i> Log In</a></li>
                     @endif
                 </ul>

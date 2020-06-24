@@ -12,7 +12,7 @@ class LoginController extends Controller
 {
     public function showLogin()
     {
-        return view('pages.login');
+        return view('pages.auth');
     }
     public function doLogin(Request $r)
     {
@@ -20,6 +20,7 @@ class LoginController extends Controller
             'email' => 'required|email',
             'pass' => 'required|min:8',
         ], $this->messages());
+
         $users = User::select('id', 'email', 'password')
             ->where('email', '=', $r->get('email'))
             ->where('active', '=', '1')->get();
@@ -39,13 +40,14 @@ class LoginController extends Controller
         } else {
             return redirect()->back()->withInput($r->only('email'))->withErrors(['mes' => 'Bạn đã nhập sai Email hoặc Password']);
         }
+
     }
     private function messages()
     {
         return [
             'email.required' => 'Bạn cần phải nhập Email.',
-            'pass.required' => 'Bạn cần phải nhập Password.',
             'email.email' => 'Định dạng Email bị sai.',
+            'pass.required' => 'Bạn cần phải nhập Password.',
             'pass.min' => 'Password phải nhiều hơn 8 ký tự.',
         ];
     }

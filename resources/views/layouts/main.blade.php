@@ -38,4 +38,6 @@
 <script src="scripts/slick.min.js"></script>
 <script src="scripts/headroom.min.js"></script>
 
+@yield('lastScript')
+
 </html>

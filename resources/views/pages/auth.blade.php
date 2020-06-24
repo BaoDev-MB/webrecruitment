@@ -5,6 +5,7 @@
 @section('content')
 <!-- Titlebar
     ================================================== -->
+
 <div id="titlebar" class="single">
     <div class="container">
 
@@ -32,19 +33,19 @@
     <div class="my-account">
 
         <ul class="tabs-nav">
-            <li class=""><a href="#tab1">Login</a></li>
-            <li><a href="#tab2">Register</a></li>
+            <li class=""><a href="#tab1">Login</a> </li>
+            <li class=""><a href="#tab2">Register</a></li>
         </ul>
 
         <div class="tabs-container">
             <!-- Login -->
             <div class="tab-content" id="tab1" style="display: none;">
-                <form method="post" action="{{url('login')}}" class="login">
-
+                <form method="POST" action="{{url('login')}}" class="login">
+                    @csrf
                     <p class="form-row form-row-wide">
                         <label for="email">Email:
                             <i class="ln ln-icon-Email"></i>
-                            <input type="text" class="input-text" name="username" id="username" value="" />
+                            <input type="text" class="input-text" name="email" id="email" value="{{ old('email') }}" />
                         </label>
                         @error('email')
                         <small class="form-text text-danger">{{ $message }}</small>
@@ -54,14 +55,14 @@
                     <p class="form-row form-row-wide">
                         <label for="pass">Password:
                             <i class="ln ln-icon-Lock-2"></i>
-                            <input class="input-text" type="password" name="password" id="password" />
+                            <input class="input-text" type="password" name="pass" id="pass" } />
                         </label>
-                        @error('password')
+                        @error('pass')
                         <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </p>
 
-                    <p class="form-row">
+                    <p class=" form-row">
                         <input type="submit" class="button border fw margin-top-10" name="login" value="Login" />
 
                         <label for="rememberme" class="rememberme">
@@ -79,33 +80,33 @@
             <!-- Register -->
             <div class="tab-content" id="tab2" style="display: none;">
 
-                <form method="post" action="{{ url('register')}}" class="register">
-
+                <form method="post" action="{{ url('register') }}" class="register">
+                    @csrf
                     <p class="form-row form-row-wide">
-                        <label for="username2">Username:
+                        <label for="r_name">Your Fullname:
                             <i class="ln ln-icon-Male"></i>
-                            <input type="text" class="input-text" name="username" id="username2" value="" />
+                            <input type="text" class="input-text" name="r_name" id="r_name" value="{{old('r_name')}}" />
                         </label>
                     </p>
 
                     <p class="form-row form-row-wide">
-                        <label for="email2">Email Address:
+                        <label for="email">Email Address:
                             <i class="ln ln-icon-Mail"></i>
-                            <input type="text" class="input-text" name="email" id="email2" value="" />
+                            <input type="text" class="input-text" name="email" id="email" value="{{old('r_email')}}" />
                         </label>
                     </p>
 
                     <p class="form-row form-row-wide">
-                        <label for="password1">Password:
+                        <label for="password">Password:
                             <i class="ln ln-icon-Lock-2"></i>
-                            <input class="input-text" type="password" name="password1" id="password1" />
+                            <input class="input-text" type="password" name="password" id="password" />
                         </label>
                     </p>
 
                     <p class="form-row form-row-wide">
-                        <label for="password2">Repeat Password:
+                        <label for="r_repass">Repeat Password:
                             <i class="ln ln-icon-Lock-2"></i>
-                            <input class="input-text" type="password" name="password2" id="password2" />
+                            <input class="input-text" type="password" name="r_repass" id="r_repass" />
                         </label>
                     </p>
 
@@ -122,4 +123,18 @@
 
 
 
+
+@endsection()
+
+
+<!-- Script to active register 
+    ================================================== -->
+@section('lastScript')
+@if ($register ?? ''!='')
+<script>
+    $( document ).ready(function() {
+        $('.tabs-nav a[href$="{{$register}}"]').parent("li").click();
+    });
+</script>
+@endif
 @endsection()
