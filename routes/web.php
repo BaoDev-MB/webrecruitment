@@ -29,5 +29,4 @@ Route::post('profile', 'AuthController@doProfile')->name('profile');
 Route::get('logout', 'AuthController@doLogout')->name('logout');
 Route::get('profile', 'AuthController@profile')->name('profile');
 
-
 Route::get('profile/edit', 'AuthController@editProfile')->name('editprofile');
