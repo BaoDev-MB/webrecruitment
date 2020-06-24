@@ -30,13 +30,3 @@ Route::get('logout', 'AuthController@doLogout')->name('logout');
 Route::get('profile', 'AuthController@profile')->name('profile');
 
 Route::get('profile/edit', 'AuthController@editProfile')->name('editprofile');
-<<<<<<< HEAD
-Route::get('messconfirm', 'ConfirmEmail@messengerConfirmEmail');
-Route::get('confirmemail/{email}/{key}', 'AuthController@confirmEmail')->name('confirmemail');
-Route::post('emailconfirm', 'ConfirmEmail@confirmEmail')->name('confirm');
-Route::get('forgetpass1', 'AuthController@forgetPass')->name('forgetpassword');
-Route::post('forgetpass', 'AuthController@doForgetPass')->name('forgetpass');
-Route::get('confirmforgetpass/{email}/{key}', 'AuthController@doConfirmPassword')->name('doconfirmpass');
-Route::post('resetpass/{email}/{key}', 'AuthController@resetPass')->name('resetpass');
-=======
->>>>>>> 465f48982a5a56d5df0a5c6dd64be078cda84589
