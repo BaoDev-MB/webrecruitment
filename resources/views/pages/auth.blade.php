@@ -46,10 +46,10 @@
                     @error('mes')
                     <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
-                    
-                    @error('ok')
-                    <small class="form-text text-danger">{{ $message }}</small>
-                    @enderror
+
+                    @if(Session::has('ok'))
+                    <small class="form-text text-info">{{ Session::get('ok') }}</small>
+                    @endif
 
                     <p class="form-row form-row-wide">
                         <label for="email">Email:
@@ -160,7 +160,7 @@
 @endsection()
 
 
-<!-- Script to active register 
+<!-- Script to active register
     ================================================== -->
 @section('lastScript')
 @if ($register ?? ''!='')

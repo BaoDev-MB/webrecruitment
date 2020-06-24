@@ -26,11 +26,16 @@ class RegisterController extends Controller
             'r_lastname' => 'required|min:3|max:50',
             'r_email' => 'required|email|unique:users,email',
             'r_pass' => 'required|min:8',
-            'r_repass' => 'required|same:pass',
-        ], $this->message());
+            'r_repass' => 'required|same:r_pass',
+        ], $this->messages());
 
-        $user = new User($u);  // chỉnh lại
-        $user->password = Hash::make($request->input('r_pass'));
+//        $user = new User($request->r_firstname,$request->r_lastname,$request->r_email,$request->r_pass);  // chỉnh lại
+        $user = User::create([
+            'first_name' =>$request->r_firstname,
+            'last_name' => $request->r_lastname,
+            'email' => $request->r_email,
+            'password'=>Hash::make($request->input('r_pass')),
+        ]);
         $key = openssl_random_pseudo_bytes(200);
         $time = now();
         $hash = md5($key . $time);

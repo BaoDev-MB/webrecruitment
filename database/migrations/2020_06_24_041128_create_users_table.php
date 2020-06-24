@@ -25,9 +25,9 @@ class CreateUsersTable extends Migration
             $table->integer('student_code')->nullable();
             $table->date('dob')->nullable();
             $table->integer('group')->nullable();
-            $table->text('radom_key')->nullable();
+            $table->text('random_key')->nullable();
             $table->dateTime('key_time')->nullable();
-            $table->integer('active');
+            $table->integer('active')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
