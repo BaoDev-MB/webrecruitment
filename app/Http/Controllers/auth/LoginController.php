@@ -23,11 +23,12 @@ class LoginController extends Controller
 
         $users = User::select('id', 'email', 'password')
             ->where('email', '=', $r->get('email'))
-            ->where('active', '=', '1')->get();
+            ->where('active', '=', '1')
+            ->get();
         if (count($users) == 1) {
             $u = $users[0];
             if ($u->email == $r->get('email') && Hash::check($r->get('pass'), $u->password)) {
-                $u = User::select('id', 'name', 'email', 'password', 'group', 'avt', 'phone', 'gender', 'studentcode', 'dateofbirth')
+                $u = User::select('id', 'first_name', 'group')
                     ->where('id', '=', $u->id)
                     ->where('active', '=', '1')->first();
                 Session::put('auth', $u);
@@ -40,7 +41,6 @@ class LoginController extends Controller
         } else {
             return redirect()->back()->withInput($r->only('email'))->withErrors(['mes' => 'Bạn đã nhập sai Email hoặc Password']);
         }
-
     }
     private function messages()
     {
