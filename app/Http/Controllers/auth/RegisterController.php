@@ -22,12 +22,12 @@ class RegisterController extends Controller
     public function doRegister(Request $request)
     {
         $u = $request->validate([
-            'r_full_name' => 'required|min:3|max:50',
+            'r_firstname' => 'required|min:3|max:50',
+            'r_lastname' => 'required|min:3|max:50',
             'r_email' => 'required|email|unique:users,email',
             'r_pass' => 'required|min:8',
-            'r_repass' => 'required|same:pass',
-        ],$this->messages());
-
+            'r_repass' => 'required|same:r_pass',
+        ], $this->messages());
 
 //        $user = new User($request->r_firstname,$request->r_lastname,$request->r_email,$request->r_pass);  // chỉnh lại
         $user = User::create([
@@ -39,14 +39,13 @@ class RegisterController extends Controller
         $key = openssl_random_pseudo_bytes(200);
         $time = now();
         $hash = md5($key . $time);
-        echo ($request->input('r_email') . "           " . $hash . "     " . $request->input('r_name'));
+        echo ($request->input('r_email') . "           " . $hash . "     " . $request->input('r_firstname'));
 
-        Mail::to($request->input('r_email'))->send(new ActiveAcount($request->input('r_email'), $hash, $request->input('r_name')));
+        Mail::to($request->input('r_email'))->send(new ActiveAcount($request->input('r_email'), $hash, $request->input('r_firstname').$request->input('r_lastname')));
 
         $user->random_key = $hash;
         $user->key_time = Carbon::now();
         $user->save();
-
 
     return redirect('login')->with('ok', 'Bạn đăng ký thành công vui lòng check Email để kích hoạt tài khoản');
 
