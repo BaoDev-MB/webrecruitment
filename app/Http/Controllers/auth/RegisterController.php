@@ -21,33 +21,36 @@ class RegisterController extends Controller
 
     public function doRegister(Request $request)
     {
-        Session::put('signup', true);
         $u = $request->validate([
-            'full_name' => 'required|min:3|max:50',
-            'email' => 'required|email|unique:users',
-            'pass' => 'required|min:8',
-            'repass' => 'required|same:pass',
-        ]);
-        Session::forget('signup');
+            'r_firstname' => 'required|min:3|max:50',
+            'r_lastname' => 'required|min:3|max:50',
+            'r_email' => 'required|email|unique:users,email',
+            'r_pass' => 'required|min:8',
+            'r_repass' => 'required|same:r_pass',
+        ], $this->messages());
 
-        $user = new User($u);
-        $user->password = Hash::make($request->input('pass'));
+//        $user = new User($request->r_firstname,$request->r_lastname,$request->r_email,$request->r_pass);  // chỉnh lại
+        $user = User::create([
+            'first_name' =>$request->r_firstname,
+            'last_name' => $request->r_lastname,
+            'email' => $request->r_email,
+            'password'=>Hash::make($request->input('r_pass')),
+        ]);
         $key = openssl_random_pseudo_bytes(200);
         $time = now();
         $hash = md5($key . $time);
-        echo ($request->input('email') . "           " . $hash . "     " . $request->input('name'));
+        echo ($request->input('r_email') . "           " . $hash . "     " . $request->input('r_name'));
 
-        Mail::to($request->input('email'))->send(new ActiveAcount($request->input('email'), $hash, $request->input('name')));
+        Mail::to($request->input('r_email'))->send(new ActiveAcount($request->input('r_email'), $hash, $request->input('r_name')));
 
         $user->random_key = $hash;
         $user->key_time = Carbon::now();
         $user->save();
 
-        return redirect('login')->with('ok', 'Bạn đăng ký thành công vui lòng check Email để kích hoạt tài khoản');
-    
+    return redirect('login')->with('ok', 'Bạn đăng ký thành công vui lòng check Email để kích hoạt tài khoản');
+
 
         return $request->email + " " + $request->password;
-    
     }
 
     public function register()
@@ -81,5 +84,24 @@ class RegisterController extends Controller
         } else {
             return redirect('login')->withErrors(['mes' => 'Xác nhận email không thành công! Email hoặc mã xác thực không đúng. ']);
         }
+    }
+
+    private function messages()
+    {
+        return [
+            'r_firstname.required' => 'Bạn cần nhập họ tên',
+            'r_firstname.min' => 'Họ tên cần lớn hơn 3 kí tự',
+            'r_firstname.max' => 'Họ tên cần bé hơn 50 kí tự',
+            'r_lastname.required' => 'Bạn cần nhập họ tên',
+            'r_lastname.min' => 'Họ tên cần lớn hơn 3 kí tự',
+            'r_lastname.max' => 'Họ tên cần bé hơn 50 kí tự',
+            'r_email.required' => 'Bạn cần phải nhập Email.',
+            'r_email.email' => 'Định dạng Email bị sai.',
+            'r_email.unique' => 'Email đã tồn tại',
+            'r_pass.required' => 'Bạn cần phải nhập Password.',
+            'r_pass.min' => 'Password phải nhiều hơn 8 ký tự.',
+            'r_repass.same' => 'RePassword không trùng với password',
+            'r_pass.required' => 'Bạn cần nhập Repassword',
+        ];
     }
 }

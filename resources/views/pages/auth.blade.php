@@ -42,6 +42,15 @@
             <div class="tab-content" id="tab1" style="display: none;">
                 <form method="POST" action="{{url('login')}}" class="login">
                     @csrf
+
+                    @error('mes')
+                    <small class="form-text text-danger">{{ $message }}</small>
+                    @enderror
+
+                    @if(Session::has('ok'))
+                    <small class="form-text text-info">{{ Session::get('ok') }}</small>
+                    @endif
+
                     <p class="form-row form-row-wide">
                         <label for="email">Email:
                             <i class="ln ln-icon-Email"></i>
@@ -83,24 +92,45 @@
                 <form method="post" action="{{ url('register') }}" class="register">
                     @csrf
                     <p class="form-row form-row-wide">
-                        <label for="r_name">Your Fullname:
+                        <label for="r_firstname">First Name:
                             <i class="ln ln-icon-Male"></i>
-                            <input type="text" class="input-text" name="r_name" id="r_name" value="{{old('r_name')}}" />
+                            <input type="text" class="input-text" name="r_firstname" id="r_firstname"
+                                value="{{old('r_firstname')}}" />
                         </label>
+                        @error('r_firstname')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                        @enderror
+                    </p>
+                    <p class="form-row form-row-wide">
+                        <label for="r_lastname">Last Name:
+                            <i class="ln ln-icon-Male"></i>
+                            <input type="text" class="input-text" name="r_lastname" id="r_lastname"
+                                value="{{old('r_lastname')}}" />
+                        </label>
+                        @error('r_lastname')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                        @enderror
                     </p>
 
                     <p class="form-row form-row-wide">
-                        <label for="email">Email Address:
+                        <label for="r_email">Email Address:
                             <i class="ln ln-icon-Mail"></i>
-                            <input type="text" class="input-text" name="email" id="email" value="{{old('r_email')}}" />
+                            <input type="text" class="input-text" name="r_email" id="r_email"
+                                value="{{old('r_email')}}" />
                         </label>
+                        @error('r_email')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                        @enderror
                     </p>
 
                     <p class="form-row form-row-wide">
-                        <label for="password">Password:
+                        <label for="r_pass">Password:
                             <i class="ln ln-icon-Lock-2"></i>
-                            <input class="input-text" type="password" name="password" id="password" />
+                            <input class="input-text" type="password" name="r_pass" id="r_pass" />
                         </label>
+                        @error('r_pass')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                        @enderror
                     </p>
 
                     <p class="form-row form-row-wide">
@@ -108,6 +138,9 @@
                             <i class="ln ln-icon-Lock-2"></i>
                             <input class="input-text" type="password" name="r_repass" id="r_repass" />
                         </label>
+                        @error('r_repass')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                        @enderror
                     </p>
 
                     <p class="form-row">
@@ -127,7 +160,7 @@
 @endsection()
 
 
-<!-- Script to active register 
+<!-- Script to active register
     ================================================== -->
 @section('lastScript')
 @if ($register ?? ''!='')
