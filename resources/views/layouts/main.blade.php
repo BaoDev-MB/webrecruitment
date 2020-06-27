@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/colors.css') }}">
 
+
+    {{-- @if(($isDashboard ?? '')!='')
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    @endif --}}
+
 </head>
 
 <body>
@@ -34,27 +39,37 @@
         @include('layouts.footer')
         @endif
     </div>
+
+
+
+
+
+    <!-- Scripts
+================================================== -->
+    <script src="{{asset('scripts/jquery-3.4.1.min.js')}} "></script>
+    <script src="{{asset('scripts/jquery-migrate-3.1.0.min.js')}}"></script>
+    <script src="{{asset('scripts/custom.js')}}"></script>
+    <script src="{{asset('scripts/jquery.superfish.js')}}"></script>
+    <script src="{{asset('scripts/jquery.themepunch.tools.min.js')}}"></script>
+    <script src="{{asset('scripts/jquery.themepunch.revolution.min.js')}}"></script>
+    <script src="{{asset('scripts/jquery.themepunch.showbizpro.min.js')}}"></script>
+    <script src="{{asset('scripts/jquery.flexslider-min.js')}}"></script>
+    <script src="{{asset('scripts/chosen.jquery.min.js')}}"></script>
+    <script src="{{asset('scripts/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{asset('scripts/waypoints.min.js')}}"></script>
+    <script src="{{asset('scripts/jquery.counterup.min.js')}}"></script>
+    <script src="{{asset('scripts/jquery.jpanelmenu.js')}}"></script>
+    <script src="{{asset('scripts/stacktable.js')}}"></script>
+    <script src="{{asset('scripts/slick.min.js')}}"></script>
+    <script src="{{asset('scripts/headroom.min.js')}}"></script>
+    
+    @yield('lastScript')
+
+   
 </body>
 
-<!-- Scripts
-================================================== -->
-<script src="scripts/jquery-3.4.1.min.js"></script>
-<script src="scripts/jquery-migrate-3.1.0.min.js"></script>
-<script src="scripts/custom.js"></script>
-<script src="scripts/jquery.superfish.js"></script>
-<script src="scripts/jquery.themepunch.tools.min.js"></script>
-<script src="scripts/jquery.themepunch.revolution.min.js"></script>
-<script src="scripts/jquery.themepunch.showbizpro.min.js"></script>
-<script src="scripts/jquery.flexslider-min.js"></script>
-<script src="scripts/chosen.jquery.min.js"></script>
-<script src="scripts/jquery.magnific-popup.min.js"></script>
-<script src="scripts/waypoints.min.js"></script>
-<script src="scripts/jquery.counterup.min.js"></script>
-<script src="scripts/jquery.jpanelmenu.js"></script>
-<script src="scripts/stacktable.js"></script>
-<script src="scripts/slick.min.js"></script>
-<script src="scripts/headroom.min.js"></script>
 
-@yield('lastScript')
+
+
 
 </html>
