@@ -21,6 +21,10 @@ class MajorsTableSeeder extends Seeder
             array(
                 'id'=>2,
                 'name'=>'Dev'
+            ),
+            array(
+                'id'=>3,
+                'name'=>'PM'
             )
         ));
     }
