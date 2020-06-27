@@ -15,12 +15,17 @@ class CompaniesTableSeeder extends Seeder
         //
         Company::insert(array(
             array(
-                'id'=>1,
-                'name'=>'KMS'
+                'id' => 1,
+                'name' => 'KMS'
             ),
             array(
-                'id'=>2,
-                'name'=>'KMS1'
+                'id' => 2,
+                'name' => 'LG'
+            ),
+
+            array(
+                'id' => 3,
+                'name' => ' King LLC'
             )
         ));
 
