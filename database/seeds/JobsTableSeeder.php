@@ -1,6 +1,6 @@
 <?php
 
-use App\JobPost;
+use App\Job;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
@@ -14,16 +14,16 @@ class JobPostsTableSeeder extends Seeder
     public function run()
     {
         //
-        JobPost::insert(array(
+        Job::insert(array(
             array(
                 'id' => 1,
                 'name' => 'KMS',
                 'majors' => 1,
                 'companies' => 1,
                 'date_posted' => Carbon::now(),
-                'date_expires' => Carbon::now()->addDay(5),
-                'key_word' => "TEST, QA",
-                'salary_upto' => 50,
+                'date_expire' => Carbon::now()->addDay(5),
+                'key_words' => "TEST, QA",
+                'salary' => 50,
                 'location' => '20180 Outer Dr Dearborn, MI 48124',
                 'active' => 1
             )

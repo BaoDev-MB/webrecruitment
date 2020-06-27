@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class JobPost extends Model
 {
     //
-    protected $table = 'jobposts';
+    protected $table = 'jobs';
 }

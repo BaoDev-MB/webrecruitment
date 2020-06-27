@@ -14,7 +14,7 @@ class CreateJobPostsTable extends Migration
     public function up()
     {
 
-        Schema::create('jobposts', function (Blueprint $table) {
+        Schema::create('jobs', function (Blueprint $table) {
         $table->increments('id')->length(11);
         $table->unsignedInteger('majors');
         $table->foreign('majors')->references('id')->on('majors');
@@ -24,10 +24,10 @@ class CreateJobPostsTable extends Migration
 //        $table->foreignId('companies')->constrained('companies');
         $table->string('name')->nullable();
         $table->date('date_posted')->nullable();
-        $table->date('date_expires')->nullable();
-        $table->string('key_word')->nullable();
-        $table->decimal('salary_upto')->nullable();
-        $table->string('url')->nullable();
+        $table->date('date_expire')->nullable();
+        $table->string('key_words')->nullable();
+        $table->decimal('salary')->nullable();
+        // $table->string('url')->nullable();
         $table->string('description')->nullable();
         $table->string('location')->nullable();
         $table->string('job_type')->nullable();
