@@ -42,7 +42,6 @@
             <div class="tab-content" id="tab1" style="display: none;">
                 <form method="POST" action="{{url('login')}}" class="login">
                     @csrf
-
                     @error('mes')
                     <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
@@ -50,7 +49,6 @@
                     @if(Session::has('ok'))
                     <small class="form-text text-success">{{ Session::get('ok') }}</small>
                     @endif
-
                     <p class="form-row form-row-wide">
                         <label for="email">Email:
                             <i class="ln ln-icon-Email"></i>

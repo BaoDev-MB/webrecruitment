@@ -39,9 +39,9 @@ class RegisterController extends Controller
         $key = openssl_random_pseudo_bytes(200);
         $time = now();
         $hash = md5($key . $time);
-        echo ($request->input('r_email') . "           " . $hash . "     " . $request->input('r_name'));
+        echo ($request->input('r_email') . "           " . $hash . "     " . $request->input('r_firstname'));
 
-        Mail::to($request->input('r_email'))->send(new ActiveAcount($request->input('r_email'), $hash, $request->input('r_name')));
+        Mail::to($request->input('r_email'))->send(new ActiveAcount($request->input('r_email'), $hash, $request->input('r_firstname').$request->input('r_lastname')));
 
         $user->random_key = $hash;
         $user->key_time = Carbon::now();

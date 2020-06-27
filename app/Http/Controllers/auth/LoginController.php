@@ -39,7 +39,7 @@ class LoginController extends Controller
                     ->withErrors(['mes' => 'Bạn đã nhập sai Email hoặc Password']);
             }
         } else {
-            return redirect()->back()->withInput($r->only('email'))->withErrors(['mes' => 'Bạn đã nhập sai Email hoặc Password']);
+            return redirect()->back()->withInput($r->only('email'))->withErrors(['mes' => 'Tài khoản không tồn tại!']);
         }
     }
     private function messages()
