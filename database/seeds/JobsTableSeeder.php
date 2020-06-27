@@ -4,7 +4,7 @@ use App\Job;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
-class JobPostsTableSeeder extends Seeder
+class JobsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

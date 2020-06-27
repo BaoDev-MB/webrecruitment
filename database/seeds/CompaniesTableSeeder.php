@@ -2,7 +2,6 @@
 
 use App\Company;
 use Illuminate\Database\Seeder;
-use Illuminate\Mail\Transport\ArrayTransport;
 
 class CompaniesTableSeeder extends Seeder
 {
