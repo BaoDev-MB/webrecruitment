@@ -16,12 +16,12 @@
         @include('layouts.header',["transparent" => $ishome ?? ''])
         @yield('content')
 
-        @if($isDashboard??''=='y')
+        {{-- @if($isDashboard??''=='y')
         <div id="dashboard">
             @include('layouts.dashboard-nav')
             @yield('dashboard-content')
         </div>
-        @endif
+        @endif --}}
 
 
         @include('layouts.footer')
