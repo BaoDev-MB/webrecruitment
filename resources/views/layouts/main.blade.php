@@ -15,6 +15,15 @@
     <div id="wrapper">
         @include('layouts.header',["transparent" => $ishome ?? ''])
         @yield('content')
+
+        @if($isDashboard??''=='y')
+        <div id="dashboard">
+            @include('layouts.dashboard-nav')
+            @yield('dashboard-content')
+        </div>
+        @endif
+
+
         @include('layouts.footer')
     </div>
 </body>
