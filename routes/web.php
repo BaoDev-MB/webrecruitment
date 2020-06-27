@@ -21,7 +21,7 @@ Route::post('resetpass/{email}/{key}', 'Auth\ForgetPasswordController@resetPass'
 
 //Route::get('messconfirm', 'ConfirmEmail@messengerConfirmEmail');
 //Route::post('emailconfirm', 'ConfirmEmail@confirmEmail')->name('confirm');
-Route::resource('job','JobController');
+Route::resource('jobs','JobController');
 
 Route::post('profile', 'AuthController@doProfile')->name('profile');
 Route::get('logout', 'AuthController@doLogout')->name('logout');

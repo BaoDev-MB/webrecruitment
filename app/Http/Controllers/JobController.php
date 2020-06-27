@@ -23,7 +23,7 @@ class JobController extends Controller
      */
     public function create()
     {
-//        return to view form add job
+        return  view('jobs.create');
     }
     /**
      * Store a newly created resource in storage.
@@ -46,7 +46,20 @@ class JobController extends Controller
             'url'=>'required',
             'date_expire'=>'required|date',
         ],$this->messages());
-        $job = new Job();
+        $job = new Job([
+            'email'=>$request->get('email'),
+            'job_title'=>$request->get('job_title'),
+            'job_type'=>$request->get('job_type'),
+            'majors'=>$request->get('majors'),
+            'salary'=>$request->get('salary'),
+            'location'=>$request->get('location'),
+            'job_tag'=>$request->get('job_tag'),
+            'description'=>$request->get('description'),
+            'url'=>$request->get('url'),
+            'date_expire'=>$request->get('date_expire')
+        ]);
+        $job->save();
+
     }
     /**
      * Display the specified resource.
