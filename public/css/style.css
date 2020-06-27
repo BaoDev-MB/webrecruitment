@@ -6771,7 +6771,7 @@ div.sceditor-group:first-child {
   color: gray;
 }
 textarea.WYSIWYG {
-  min-height: 300px;
+  min-height: 150px;
 }
 .submit-page .divider {
   border-bottom: 1px solid #e0e0e0;
