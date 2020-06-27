@@ -48,7 +48,7 @@
                     @enderror
 
                     @if(Session::has('ok'))
-                    <small class="form-text text-info">{{ Session::get('ok') }}</small>
+                    <small class="form-text text-success">{{ Session::get('ok') }}</small>
                     @endif
 
                     <p class="form-row form-row-wide">
