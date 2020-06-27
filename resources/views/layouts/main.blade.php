@@ -6,25 +6,33 @@
     <meta charset="utf-8">
     <title>@yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/colors.css') }}">
 
 </head>
 
 <body>
     <div id="wrapper">
+
+        @if ($isDashboard??''!='')
+        @include('layouts.header',["dashboard" => 'dashboard-header'])
+        @else
         @include('layouts.header',["transparent" => $ishome ?? ''])
+        @endif
+
         @yield('content')
 
-        {{-- @if($isDashboard??''=='y')
+
+        @if(($isDashboard ?? '')!='')
         <div id="dashboard">
             @include('layouts.dashboard-nav')
             @yield('dashboard-content')
         </div>
-        @endif --}}
+        @endif
 
-
+        @if (($isDashboard ?? '')=='')
         @include('layouts.footer')
+        @endif
     </div>
 </body>
 
