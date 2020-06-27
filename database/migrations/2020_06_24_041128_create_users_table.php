@@ -29,12 +29,15 @@ class CreateUsersTable extends Migration
             $table->dateTime('key_time')->nullable();
             $table->integer('active')->default(0);
             $table->rememberToken();
-            $table->timestamps();
+            $table->string('user_add')->nullable();
+            $table->timestamp('created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the mi
+     * grations.
      *
      * @return void
      */
