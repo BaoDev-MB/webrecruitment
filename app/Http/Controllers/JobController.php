@@ -23,8 +23,8 @@ class JobController extends Controller
      */
     public function create()
     {
-//        return to view form add job
-    }
+        return view('pages.job.add-job');
+    }   
     /**
      * Store a newly created resource in storage.
      *
