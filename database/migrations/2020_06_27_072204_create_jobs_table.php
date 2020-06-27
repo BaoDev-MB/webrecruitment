@@ -34,7 +34,6 @@ class CreateJobsTable extends Migration
             $table->string('description')->nullable();
             $table->string('requirements')->nullable();
             $table->string('benefits')->nullable();
-
             $table->string('location')->nullable();
             $table->integer('active')->default(0);
             $table->timestamp('created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
