@@ -10,6 +10,9 @@ class Job extends Model
     public function  majors(){
         return $this->belongsTo('App\Major');
     }
+    public function company(){
+        return $this->belongsTo(Company::class);
+    }
     public function  job_types(){
         return $this->belongsToMany(JobType::class, 'job_jobtype','job_id','jobtype_id');
     }

@@ -5,13 +5,13 @@
 @section('content')
 <!-- Titlebar
 ================================================== -->
-<div id="titlebar" class="photo-bg" style="background: url(images/job-page-photo.jpg);">
+<div id="titlebar" class="photo-bg" style="background: url({{asset('images/job-page-photo.jpg')}})">
     <div class="container">
         <div class="col-md-8">
             <span><a href="browse-jobs.html">Restaurant / Food Service</a></span>
             <h2>
                 {{$job->job_title}}
-                <span class="full-time">{{$job->job_name}}</span>
+                <span class="full-time">{{$job->job_types[0]->name}}</span>
             </h2>
         </div>
 
@@ -31,9 +31,9 @@
             <div class="company-info">
                 <img src="images/company-logo.png" alt="" />
                 <div class="content">
-                    <h4>{{$job->companies_name}}</h4>
-                    <span><a href="#"><i class="fa fa-link"></i> {{$job->url}}</a></span>
-{{--                    <span><a href="#"><i class="fa fa-twitter"></i> @kingrestaurants</a></span>--}}
+                    <h4>{{$job->company->name}}</h4>
+                    <span><a href="{{$job->company->url}}"><i class="fa fa-link"></i> Website</a></span>
+                    <span><a href="#"><i class="fa fa-twitter"></i> {{$job->company->email}}</a></span>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -49,7 +49,7 @@
 
             <br />
             <p>
-                The <strong>Food Service Specialist</strong> will have
+                The <strong>Service Specialist</strong> will have
                 responsibilities that include:
             </p>
 

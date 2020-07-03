@@ -49,15 +49,15 @@
                 <h3 class="margin-bottom-25">Recent Jobs</h3>
                 <div class="listings-container">
                     @foreach($jobs as $j)
-                    <a href="job-page-alt.html" class="listing {{$j->job_name}}">
+                    <a href="job-page-alt.html" class="listing {{$j->job_types[0]->class_css}}">
                         <div class="listing-logo">
                             <img src="images/job-list-logo-01.png" alt="">
                         </div>
                         <div class="listing-title">
-                            <h4> {{$j->job_title}} <span class="listing-type">{{$j->job_name}}</span>
+                            <h4> {{$j->job_title}} <span class="listing-type">{{$j->job_types[0]->name}}</span>
                             </h4>
                             <ul class="listing-icons">
-                                <li><i class="ln ln-icon-Management"></i> {{$j->companies_name}}</li>
+                                <li><i class="ln ln-icon-Management"></i> {{$j->company->name}}</li>
                                 <li><i class="ln ln-icon-Map2"></i> {{$j->location}}</li>
                                 <li><i class="ln ln-icon-Money-2"></i> ${{$j->salary}}</li>
                                 <li>

@@ -19,10 +19,8 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = Job::join( 'job_types', 'jobs.job_types', 'job_types.id' )
-                   ->join( 'companies', 'jobs.companies', '=', 'companies.id' )
-                   ->select( 'job_types.css_class as job_name','companies.name as companies_name','jobs.*' )
-                   ->take(8)->get();
+        $jobs = Job::all()
+                   ->take(8);
         return view('pages.job.browse-jobs', [ 'jobs' => $jobs ]);
     }
 
@@ -85,11 +83,8 @@ class JobController extends Controller
      */
     public function show($id)
     {
-//        $job = Job::join( 'job_types', 'jobs.job_types', 'job_types.id' )
-//                   ->join( 'companies', 'jobs.companies', '=', 'companies.id' )
-//                   ->select('job_types.name as job_name','companies.name as companies_name','jobs.*' )
-//                   ->
-//        return view('pages.job.job-details',['job'=>$job]);
+        $job=Job::find($id);
+        return view('pages.job.job-details',['job'=>$job]);
     }
 
     /**
