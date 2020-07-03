@@ -48,98 +48,28 @@
             <div class="padding-right">
                 <h3 class="margin-bottom-25">Recent Jobs</h3>
                 <div class="listings-container">
-                    @for($i=0;$i<3;$i++)
-                    <a href="job-page-alt.html" class="listing {{$job_typeName[$i]->css_class}}">
+                    @foreach($jobs as $j)
+                    <a href="job-page-alt.html" class="listing {{$j->job_name}}">
                         <div class="listing-logo">
                             <img src="images/job-list-logo-01.png" alt="">
                         </div>
                         <div class="listing-title">
-                            <h4> {{$jobs[$i]->job_title}} <span class="listing-type">{{$job_typeName[$i]->name}}</span>
+                            <h4> {{$j->job_title}} <span class="listing-type">{{$j->job_name}}</span>
                             </h4>
                             <ul class="listing-icons">
-                                <li><i class="ln ln-icon-Management"></i> {{$companiesName[$i]->name}}</li>
-                                <li><i class="ln ln-icon-Map2"></i> {{$jobs[$i]->location}}</li>
-                                <li><i class="ln ln-icon-Money-2"></i> ${{$jobs[$i]->salary}}</li>
+                                <li><i class="ln ln-icon-Management"></i> {{$j->companies_name}}</li>
+                                <li><i class="ln ln-icon-Map2"></i> {{$j->location}}</li>
+                                <li><i class="ln ln-icon-Money-2"></i> ${{$j->salary}}</li>
                                 <li>
                                     <div class="listing-date new">new</div>
                                 </li>
                             </ul>
                         </div>
                     </a>
-                    @endfor
-{{--                    <!-- Listing -->--}}
-{{--                    <a href="job-page.html" class="listing part-time">--}}
-{{--                        <div class="listing-logo">--}}
-{{--                            <img src="images/job-list-logo-02.png" alt="">--}}
-{{--                        </div>--}}
-{{--                        <div class="listing-title">--}}
-{{--                            <h4>Core PHP Developer for Site Maintenance <span class="listing-type">Part-Time</span></h4>--}}
-{{--                            <ul class="listing-icons">--}}
-{{--                                <li><i class="ln ln-icon-Management"></i> Cubico</li>--}}
-{{--                                <li><i class="ln ln-icon-Map2"></i> Sydney</li>--}}
-{{--                                <li><i class="ln ln-icon-Money-2"></i> $125 / hour</li>--}}
-{{--                                <li>--}}
-{{--                                    <div class="listing-date">3d ago</div>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-{{--                    </a>--}}
-
-{{--                    <!-- Listing -->--}}
-{{--                    <a href="job-page-alt.html" class="listing full-time">--}}
-{{--                        <div class="listing-logo">--}}
-{{--                            <img src="images/job-list-logo-01.png" alt="">--}}
-{{--                        </div>--}}
-{{--                        <div class="listing-title">--}}
-{{--                            <h4>Restaurant Team Member - Crew <span class="listing-type">Full-Time</span></h4>--}}
-{{--                            <ul class="listing-icons">--}}
-{{--                                <li><i class="ln ln-icon-Management"></i> King</li>--}}
-{{--                                <li><i class="ln ln-icon-Map2"></i> Sydney</li>--}}
-{{--                                <li>--}}
-{{--                                    <div class="listing-date">3d ago</div>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-{{--                    </a>--}}
-
-{{--                    <!-- Listing -->--}}
-{{--                    <a href="job-page.html" class="listing internship">--}}
-{{--                        <div class="listing-logo">--}}
-{{--                            <img src="images/job-list-logo-04.png" alt="">--}}
-{{--                        </div>--}}
-{{--                        <div class="listing-title">--}}
-{{--                            <h4>Power Systems User Experience Designer <span class="listing-type">Internship</span></h4>--}}
-{{--                            <ul class="listing-icons">--}}
-{{--                                <li><i class="ln ln-icon-Management"></i> Hexagon</li>--}}
-{{--                                <li><i class="ln ln-icon-Map2"></i> London</li>--}}
-{{--                                <li><i class="ln ln-icon-Money-2"></i> $55 / hour</li>--}}
-{{--                                <li>--}}
-{{--                                    <div class="listing-date">4d ago</div>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-{{--                    </a>--}}
-
-{{--                    <!-- Listing -->--}}
-{{--                    <a href="job-page.html" class="listing freelance">--}}
-{{--                        <div class="listing-logo">--}}
-{{--                            <img src="images/job-list-logo-05.png" alt="">--}}
-{{--                        </div>--}}
-{{--                        <div class="listing-title">--}}
-{{--                            <h4>iPhone / Android Music App Development <span class="listing-type">Freelance</span></h4>--}}
-{{--                            <ul class="listing-icons">--}}
-{{--                                <li><i class="ln ln-icon-Management"></i> Hexagon</li>--}}
-{{--                                <li><i class="ln ln-icon-Map2"></i> London</li>--}}
-{{--                                <li><i class="ln ln-icon-Money-2"></i> $85 / hour</li>--}}
-{{--                                <li>--}}
-{{--                                    <div class="listing-date">4d ago</div>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-{{--                    </a>--}}
+                    @endforeach
                 </div>
 
-                <a href="browse-jobs.html" class="button centered"><i class="fa fa-plus-circle"></i> Show More Jobs</a>
+                <a href="{{route('jobs.index')}}" class="button centered"><i class="fa fa-plus-circle"></i> Show More Jobs</a>
                 <div class="margin-bottom-55"></div>
             </div>
         </div>

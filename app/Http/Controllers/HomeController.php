@@ -3,23 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Job;
-use App\JobType;
-use Illuminate\Support\Facades\DB;
 
-class HomeController extends Controller
-{
-    public function index()
-    {
-        $query = DB::table('jobs')
-            ->join('job_types', 'jobs.job_types', '=', 'job_types.id')
-            ->join('companies', 'jobs.companies', '=', 'companies.id');
-
-        $jobs =$query->select('jobs.*')->get();
-
-        $companiesName= $query->select('companies.name')->get();
-
-        $job_typeName= $query->select('job_types.name','job_types.css_class')->get();
-
-        return view('index', ['jobs' => $jobs,'companiesName'=>$companiesName,'job_typeName'=>$job_typeName]);
+class HomeController extends Controller {
+    public function index() {
+        $jobs = Job::join( 'job_types', 'jobs.job_types', 'job_types.id' )
+                   ->join( 'companies', 'jobs.companies', '=', 'companies.id' )
+                   ->select( 'job_types.css_class as job_name','companies.name as companies_name','jobs.*' )
+                   ->take(3)->get();
+        return view( 'index', [ 'jobs' => $jobs ] );
     }
 }
