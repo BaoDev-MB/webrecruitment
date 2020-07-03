@@ -219,7 +219,6 @@
         <!-- Sort by -->
         <div class="widget">
             <h4>Sort by</h4>
-
             <!-- Select -->
             <select data-placeholder="Choose Category" class="chosen-select-no-single">
                 <option selected="selected" value="recent">Newest</option>
@@ -234,13 +233,11 @@
         <div class="widget">
             <h4>Location</h4>
             <form action="#" method="get">
-                <input type="text" placeholder="State / Province" value="" />
-                <input type="text" placeholder="City" value="" />
-
-                <input type="text" class="miles" placeholder="Miles" value="" />
-                <label for="zip-code" class="from">from</label>
-                <input type="text" id="zip-code" class="zip-code" placeholder="Zip-Code" value="" /><br />
-
+                <select data-placeholder="Choose Location" class="chosen-select-no-single">
+                    <option selected="selected" value="recent">Ho Chi Minh</option>
+                    <option value="oldest">Oldest</option>
+                </select>
+                <br />
                 <button class="button">Filter</button>
             </form>
         </div>
