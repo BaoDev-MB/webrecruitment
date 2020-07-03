@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\ContactJobType;
 use App\Job;
 use App\JobType;
+use App\Major;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 class JobController extends Controller
 {
     /**
@@ -136,5 +137,17 @@ class JobController extends Controller
             'date_expire.required' => 'Không được để trống Date',
             'date_expire.date' => 'Không đúng định dạng',
         ];
+    }
+
+    public function test()
+    {
+        $users = DB::table('contactjobtypes')
+            ->join('jobs', 'contactjobtypes.job_id', '=', 'jobs.id')
+            ->join('job_types', 'contactjobtypes.jobtype_id', '=', 'job_types.id')
+            ->select('jobs.id','jobs.job_title','job_types.name')
+            ->get();
+        dd($users);
+
+
     }
 }

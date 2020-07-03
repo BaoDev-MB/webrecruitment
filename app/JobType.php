@@ -9,6 +9,8 @@ class JobType extends Model
     //
     protected $table = 'job_types';
     protected $fillable = [
-        'name',
+        'job_ib',
+        'name'
     ];
+
 }

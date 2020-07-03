@@ -16,13 +16,10 @@ class CreateJobsTable extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->increments('id')->length(11);
-            $table->unsignedInteger('majors');
-            $table->foreign('majors')->references('id')->on('majors');
-            $table->unsignedInteger('companies');
-            $table->foreign('companies')->references('id')->on('companies');
-
-            $table->unsignedInteger('job_types');
-            $table->foreign('job_types')->references('id')->on('job_types');
+            $table->unsignedInteger('majors_id');
+            $table->foreign('majors_id')->references('id')->on('majors');
+            $table->unsignedInteger('company_id');
+            $table->foreign('company_id')->references('id')->on('companies');
 
             $table->string('job_title')->nullable();
             $table->string('email')->nullable();
