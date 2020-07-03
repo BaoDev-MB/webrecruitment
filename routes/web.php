@@ -2,9 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view("index");
-})->name('welcome');
+Route::get('/','HomeController@index')->name('welcome');
+
 Route::get('login', 'Auth\LoginController@showLogin')->name('login');
 Route::post('login', 'Auth\LoginController@doLogin');
 
@@ -21,10 +20,11 @@ Route::post('resetpass/{email}/{key}', 'Auth\ForgetPasswordController@resetPass'
 
 //Route::get('messconfirm', 'ConfirmEmail@messengerConfirmEmail');
 //Route::post('emailconfirm', 'ConfirmEmail@confirmEmail')->name('confirm');
-Route::resource('jobs','JobController');
 
 Route::post('profile', 'AuthController@doProfile')->name('profile');
 Route::get('logout', 'AuthController@doLogout')->name('logout');
 Route::get('profile', 'AuthController@profile')->name('profile');
 
 Route::get('profile/edit', 'AuthController@editProfile')->name('editprofile');
+
+Route::resource('jobs','JobController');
