@@ -6,27 +6,30 @@ use Illuminate\Database\Eloquent\Model;
 
 class Job extends Model
 {
-    public function CompanyBy()
-    {
-        return $this->belongsTo('App\Company','companies');
-    }
-    public function JobTypeBy()
-    {
-        return $this->belongsTo('App\JobType','job_types');
-    }
-    //
-    protected $table = 'jobs';
 
+    public function  majors(){
+        return $this->belongsTo('App\Major');
+    }
+    public function  job_types(){
+        return $this->belongsToMany(JobType::class, 'job_jobtype','job_id','jobtype_id');
+    }
     protected $fillable = [
-        'email',
+        'majors_id',
+        'companies_id',
+        'job_types_id',
         'job_title',
-        'job_types',
-        'majors',
+        'email',
+        'date_posted',
+        'date_expire',
+        'job_tag',
 //            'salary'=>$request->get('salary'),
         'location',
         'job_tag',
         'description',
         'url',
-        'date_expire'
     ];
+    //
+
+    protected $table = 'jobs';
+
 }

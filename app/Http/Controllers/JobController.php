@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Company;
-use App\Http\Middleware\RedirectIfAuthenticated;
+
+use App\ContactJobType;
 use App\Job;
 use App\JobType;
+use App\Major;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 class JobController extends Controller
 {
     /**
@@ -88,7 +89,7 @@ class JobController extends Controller
 //                   ->join( 'companies', 'jobs.companies', '=', 'companies.id' )
 //                   ->select('job_types.name as job_name','companies.name as companies_name','jobs.*' )
 //                   ->
-        return view('pages.job.job-details',['job'=>$job]);
+//        return view('pages.job.job-details',['job'=>$job]);
     }
 
     /**
@@ -146,5 +147,11 @@ class JobController extends Controller
             'date_expire.required' => 'Không được để trống Date',
             'date_expire.date' => 'Không đúng định dạng',
         ];
+    }
+
+    public function test()
+    {
+        $job = Job::find(1);
+        dd($job->job_types);
     }
 }

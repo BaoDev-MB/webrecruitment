@@ -1,7 +1,7 @@
 <?php
 
-use App\JobType;
 use Illuminate\Database\Seeder;
+use App\JobType;
 
 class JobTypesTableSeeder extends Seeder
 {
@@ -15,22 +15,27 @@ class JobTypesTableSeeder extends Seeder
         //
         JobType::insert(array(
             array(
-                'id'=>1,
-                'name'=>'Part time'
+                'id' => 1,
+                'class_css'=>"part-time",
+                'name' => 'Part time'
             ),
             array(
-                'id'=>2,
-                'name'=>'Full time'
+                'id' => 2,
+                'class_css'=>"full-time",
+                'name' => 'Full Time'
             ),
-            array(
-                'id'=>3,
-                'name'=>'Internship'
-            ),
-            array(
-                'id'=>4,
-                'name'=>'Freelance'
-            )
 
+            array(
+                'id' => 3,
+                'class_css'=>"internship",
+                'name' => 'Internship'
+            ),
+
+            array(
+                'id' => 4,
+                'class_css'=>"freelance",
+                'name' => 'Freelance'
+            )
         ));
     }
 }

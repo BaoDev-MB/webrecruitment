@@ -44,7 +44,7 @@
 <div class="container">
     <div class="row">
         <!-- Recent Jobs -->
-        <div class="eleven columns">
+        <div class="col-md-8">
             <div class="padding-right">
                 <h3 class="margin-bottom-25">Recent Jobs</h3>
                 <div class="listings-container">
@@ -69,13 +69,13 @@
                     @endforeach
                 </div>
 
-                <a href="{{route('jobs.index')}}" class="button centered"><i class="fa fa-plus-circle"></i> Show More Jobs</a>
+                <a href="browse-jobs.html" class="button centered"><i class="fa fa-plus-circle"></i> Show More Jobs</a>
                 <div class="margin-bottom-55"></div>
             </div>
         </div>
 
         <!-- Job Spotlight -->
-        <div class="five columns">
+        <div class="col-md-4">
             <h3 class="margin-bottom-5">Job Spotlight</h3>
 
             <!-- Navigation -->
