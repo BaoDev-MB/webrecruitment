@@ -10,8 +10,8 @@
         <div class="col-md-8">
             <span><a href="browse-jobs.html">Restaurant / Food Service</a></span>
             <h2>
-                Restaurant Team Member - Crew
-                <span class="full-time">Full-Time</span>
+                {{$job->job_title}}
+                <span class="full-time">{{$job->job_name}}</span>
             </h2>
         </div>
 
@@ -31,9 +31,9 @@
             <div class="company-info">
                 <img src="images/company-logo.png" alt="" />
                 <div class="content">
-                    <h4>King LLC</h4>
-                    <span><a href="#"><i class="fa fa-link"></i> Website</a></span>
-                    <span><a href="#"><i class="fa fa-twitter"></i> @kingrestaurants</a></span>
+                    <h4>{{$job->companies_name}}</h4>
+                    <span><a href="#"><i class="fa fa-link"></i> {{$job->url}}</a></span>
+{{--                    <span><a href="#"><i class="fa fa-twitter"></i> @kingrestaurants</a></span>--}}
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -107,14 +107,14 @@
                         <i class="fa fa-map-marker"></i>
                         <div>
                             <strong>Location:</strong>
-                            <span>20180 Outer Dr Dearborn, MI 48124</span>
+                            <span>{{$job->location}}</span>
                         </div>
                     </li>
                     <li>
                         <i class="fa fa-user"></i>
                         <div>
                             <strong>Job Title:</strong>
-                            <span>Food Service Specialist</span>
+                            <span>{{$job->job_title}}</span>
                         </div>
                     </li>
                     <li>
@@ -128,7 +128,7 @@
                         <i class="fa fa-money"></i>
                         <div>
                             <strong>Rate:</strong>
-                            <span>$9.50 - $12.50 / hour</span>
+                            <span>{{$job->salary}}</span>
                         </div>
                     </li>
                 </ul>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Job;
 use App\JobType;
 use Illuminate\Http\Request;
@@ -17,7 +18,11 @@ class JobController extends Controller
      */
     public function index()
     {
-        return view('pages.job.browse-jobs');
+        $jobs = Job::join( 'job_types', 'jobs.job_types', 'job_types.id' )
+                   ->join( 'companies', 'jobs.companies', '=', 'companies.id' )
+                   ->select( 'job_types.css_class as job_name','companies.name as companies_name','jobs.*' )
+                   ->take(8)->get();
+        return view('pages.job.browse-jobs', [ 'jobs' => $jobs ]);
     }
 
     /**
@@ -28,6 +33,7 @@ class JobController extends Controller
     public function create()
     {
         $job_types = JobType::all();
+        // companies lấy từ sesion ra. cần login bằng tài khoản doanh nghiệp
         $companies = Company::all();
         return view('pages.job.add-job', ['job_types' => $job_types, 'company' => $companies]);
     }
@@ -78,7 +84,11 @@ class JobController extends Controller
      */
     public function show($id)
     {
-
+//        $job = Job::join( 'job_types', 'jobs.job_types', 'job_types.id' )
+//                   ->join( 'companies', 'jobs.companies', '=', 'companies.id' )
+//                   ->select('job_types.name as job_name','companies.name as companies_name','jobs.*' )
+//                   ->
+        return view('pages.job.job-details',['job'=>$job]);
     }
 
     /**
