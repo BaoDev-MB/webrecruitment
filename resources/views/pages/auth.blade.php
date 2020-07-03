@@ -26,7 +26,7 @@
     <div class="my-account">
         <ul class="tabs-nav">
             <li class=""><a href="#tab1">Login</a></li>
-            <li class="in active"><a href="#tab2">Register</a></li>
+            <li class=""><a href="#tab2">Register</a></li>
         </ul>
 
         <div class="tabs-container">
@@ -47,7 +47,7 @@
                         </label>
                     </div>
 
-                    <p class="form-row">
+                    <p class="form-group">
                         <input type="submit" class="btn-block border fw mt-3" name="login" value="Login" />
 
                         <label for="rememberme" class="rememberme">
@@ -92,7 +92,7 @@
                         </label>
                     </div>
 
-                    <p class="form-row">
+                    <p class="form-group">
                         <input type="submit" class="btn-block border fw mt-3" name="register" value="Register" />
                     </p>
                 </form>
