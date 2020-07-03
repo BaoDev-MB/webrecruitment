@@ -58,10 +58,10 @@ class ForgetPasswordController extends Controller
                     'key' => $key,
                 ]);
             } else {
-                return \view('notify')->withErrors('mes', 'Mail đã hết hạn sử dụng');
+                return redirect('notify')->withErrors('mes', 'Mail đã hết hạn sử dụng');
             }
         } else {
-            return \view('notify')->withErrors(['mes' => 'Đường dẫn này chỉ được sử dụng được một lần']);
+            return redirect('notify')->withErrors(['mes' => 'Đường dẫn này chỉ được sử dụng được một lần']);
         }
     }
 

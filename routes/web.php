@@ -20,7 +20,7 @@ Route::post('resetpass/{email}/{key}', 'Auth\ForgetPasswordController@resetPass'
 
 
 Route::get('notify', function () {
-    return view('notify');
+    return view('pages.notify');
 })->name('notify');
 
 //Route::get('messconfirm', 'ConfirmEmail@messengerConfirmEmail');
