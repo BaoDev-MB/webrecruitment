@@ -28,3 +28,4 @@ Route::get('profile', 'AuthController@profile')->name('profile');
 Route::get('profile/edit', 'AuthController@editProfile')->name('editprofile');
 
 Route::resource('jobs','JobController');
+Route::resource('resumes','ResumeController');

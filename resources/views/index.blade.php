@@ -2,46 +2,47 @@
 
 @section('title', 'Home Page')
 
-@section('content')<!-- Banner
+@section('content')
+<!-- Banner
     ================================================== -->
-    <div id="banner" class="with-transparent-header parallax background"
-        style="background-image: url(images/banner-home-02.jpg)" data-img-width="2000" data-img-height="1330"
-        data-diff="300">
-        <div class="container">
-            <div class="sixteen columns">
+<div id="banner" class="with-transparent-header parallax background"
+    style="background-image: url(images/banner-home-02.jpg)" data-img-width="2000" data-img-height="1330"
+    data-diff="300">
+    <div class="container">
+        <div class="sixteen columns">
 
-                <div class="search-container">
+            <div class="search-container">
 
-                    <!-- Form -->
-                    <h2>Find Job</h2>
-                    <input type="text" class="ico-01" placeholder="job title, keywords or company name" value="" />
-                    <input type="text" class="ico-02" placeholder="city, province or region" value="" />
-                    <button><i class="fa fa-search"></i></button>
+                <!-- Form -->
+                <h2>Find Job</h2>
+                <input type="text" class="ico-01" placeholder="job title, keywords or company name" value="" />
+                <input type="text" class="ico-02" placeholder="city, province or region" value="" />
+                <button><i class="fa fa-search"></i></button>
 
-                    <!-- Browse Jobs -->
-                    <div class="browse-jobs">
-                        Browse job offers by <a href="browse-categories.html"> category</a> or <a href="#">location</a>
-                    </div>
+                <!-- Browse Jobs -->
+                <div class="browse-jobs">
+                    Browse job offers by <a href="browse-categories.html"> category</a> or <a href="#">location</a>
+                </div>
 
-                    <!-- Announce -->
-                    <!-- 				<div class="announce">
+                <!-- Announce -->
+                <!-- 				<div class="announce">
                         We’ve over <strong>15 000</strong> job offers for you!
                     </div> -->
 
-                </div>
-
             </div>
+
         </div>
     </div>
+</div>
 
 
-    <!-- Content
+<!-- Content
     ================================================== -->
 
-    <!-- Recent Jobs -->
+<!-- Recent Jobs -->
 
-    <div class="container">
-
+<div class="container">
+    <div class="row">
         <!-- Recent Jobs -->
         <div class="eleven columns">
             <div class="padding-right">
@@ -156,7 +157,8 @@
 
             <!-- Showbiz Container -->
             <div id="job-spotlight" class="showbiz-container">
-                <div class="showbiz" data-left="#showbiz_left_1" data-right="#showbiz_right_1" data-play="#showbiz_play_1">
+                <div class="showbiz" data-left="#showbiz_left_1" data-right="#showbiz_right_1"
+                    data-play="#showbiz_play_1">
                     <div class="overflowholder">
 
                         <ul>
@@ -164,7 +166,8 @@
                             <li>
                                 <div class="job-spotlight">
                                     <a href="#">
-                                        <h4>Social Media: Advertising Coordinator <span class="part-time">Part-Time</span>
+                                        <h4>Social Media: Advertising Coordinator <span
+                                                class="part-time">Part-Time</span>
                                         </h4>
                                     </a>
                                     <span><i class="fa fa-briefcase"></i> Mates</span>
@@ -185,7 +188,8 @@
                                     <span><i class="fa fa-briefcase"></i> King</span>
                                     <span><i class="fa fa-map-marker"></i> London</span>
                                     <span><i class="fa fa-money"></i> $25 / hour</span>
-                                    <p>Etiam suscipit tellus ante, sit amet hendrerit magna varius in. Pellentesque lorem
+                                    <p>Etiam suscipit tellus ante, sit amet hendrerit magna varius in. Pellentesque
+                                        lorem
                                         quis enim venenatis pellentesque.</p>
                                     <a href="job-page.html" class="button">Apply For This Job</a>
                                 </div>
@@ -216,94 +220,12 @@
 
         </div>
     </div>
+</div>
 
 
-    <!-- Recent Jobs / End -->
+<!-- Recent Jobs / End -->
 
 
 
-    <!-- Flip banner -->
-    <a href="browse-jobs.html" class="flip-banner margin-bottom-55" data-background="images/all-categories-photo.jpg"
-        data-color="#238ae6" data-color-opacity="0.93">
-        <div class="flip-banner-content">
-            <h2 class="flip-visible">Step inside and see for yourself!</h2>
-            <h2 class="flip-hidden">Get Started <i class="fa fa-angle-right"></i></h2>
-        </div>
-    </a>
-    <!-- Flip banner / End -->
-
-
-    <!-- Recent Posts -->
-    <div class="container">
-        <div class="sixteen columns">
-            <h3 class="margin-bottom-25">Recent Posts</h3>
-        </div>
-
-        <div class="one-third column">
-
-            <!-- Post #1 -->
-            <div class="recent-post">
-                <div class="recent-post-img"><a href="blog-single-post.html"><img src="images/recent-post-01.jpg"
-                            alt=""></a>
-                    <div class="hover-icon"></div>
-                </div>
-                <a href="blog-single-post.html">
-                    <h4>Hey Job Seeker, It’s Time To Get Up And Get Hired</h4>
-                </a>
-                <div class="meta-tags">
-                    <span>October 10, 2015</span>
-                    <span><a href="#">0 Comments</a></span>
-                </div>
-                <p>The world of job seeking can be all consuming. From secretly stalking the open reqs page of your dream
-                    company to sending endless applications.</p>
-                <a href="blog-single-post.html" class="button">Read More</a>
-            </div>
-
-        </div>
-
-
-        <div class="one-third column">
-
-            <!-- Post #2 -->
-            <div class="recent-post">
-                <div class="recent-post-img"><a href="blog-single-post.html"><img src="images/recent-post-02.jpg"
-                            alt=""></a>
-                    <div class="hover-icon"></div>
-                </div>
-                <a href="blog-single-post.html">
-                    <h4>How to "Woo" a Recruiter and Land Your Dream Job</h4>
-                </a>
-                <div class="meta-tags">
-                    <span>September 12, 2015</span>
-                    <span><a href="#">0 Comments</a></span>
-                </div>
-                <p>Struggling to find your significant other the perfect Valentine’s Day gift? If I may make a suggestion:
-                    woo a recruiter. </p>
-                <a href="blog-single-post.html" class="button">Read More</a>
-            </div>
-
-        </div>
-
-        <div class="one-third column">
-
-            <!-- Post #3 -->
-            <div class="recent-post">
-                <div class="recent-post-img"><a href="blog-single-post.html"><img src="images/recent-post-03.jpg"
-                            alt=""></a>
-                    <div class="hover-icon"></div>
-                </div>
-                <a href="blog-single-post.html">
-                    <h4>11 Tips to Help You Get New Clients Through Cold Calling</h4>
-                </a>
-                <div class="meta-tags">
-                    <span>August 27, 2015</span>
-                    <span><a href="#">0 Comments</a></span>
-                </div>
-                <p>If your dream employer appears on this list, you’re certainly in good company. But it also means you’re
-                    up for some intense competition.</p>
-                <a href="blog-single-post.html" class="button">Read More</a>
-            </div>
-        </div>
-    </div>
 
 @endsection()
