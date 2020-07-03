@@ -70,7 +70,7 @@
                     </p>
 
                     <p class="lost_password">
-                        <a href="{{route('forgetpassword')}}">Lost Your Password?</a>
+                        <a href="{{route('forgetpass')}}">Lost Your Password?</a>
                     </p>
                 </form>
             </div>

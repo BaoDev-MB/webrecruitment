@@ -12,7 +12,7 @@ Route::post('register', 'Auth\RegisterController@doRegister')->name('register');
 Route::get('register', 'Auth\RegisterController@showRegister')->name('register');
 Route::get('confirmemail/{email}/{key}', 'Auth\RegisterController@confirmEmail')->name('confirmemail');
 
-Route::get('forgetpass', 'Auth\ForgetPasswordController@forgetPass')->name('forgetpassword');
+Route::get('forgetpass', 'Auth\ForgetPasswordController@forgetPass')->name('forgetpass');
 Route::post('forgetpass', 'Auth\ForgetPasswordController@doForgetPass')->name('forgetpass');
 Route::get('confirmforgetpass/{email}/{key}', 'Auth\ForgetPasswordController@doConfirmPassword')->name('doconfirmpass');
 
