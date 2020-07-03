@@ -33,19 +33,33 @@
             <!-- Login -->
             <div class="tab-content" id="tab1" style="display: none;">
                 <form method="post" class="login">
-                    <div class="form">
-                        <label for="username">Username:
-                            <i class="ln ln-icon-Male"></i>
-                            <input type="text" class="input-text" name="username" id="username" value="" />
-                        </label>
-                    </div>
+                    @csrf
+                    @error('mes')
+                    <small class="form-text text-danger">{{ $message }}</small>
+                    @enderror
 
-                    <div class="form">
-                        <label for="password">Password:
-                            <i class="ln ln-icon-Lock-2"></i>
-                            <input class="input-text" type="password" name="password" id="password" />
+                    @if(Session::has('ok'))
+                    <small class="form-text text-success">{{ Session::get('ok') }}</small>
+                    @endif
+                    <p class="form">
+                        <label for="email">Email:
+                            <i class="ln ln-icon-Email"></i>
+                            <input type="text" class="input-text" name="email" id="email" value="{{ old('email') }}" />
                         </label>
-                    </div>
+                        @error('email')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                        @enderror
+                    </p>
+
+                    <p class="form">
+                        <label for="pass">Password:
+                            <i class="ln ln-icon-Lock-2"></i>
+                            <input class="input-text" type="password" name="pass" id="pass" } />
+                        </label>
+                        @error('pass')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                        @enderror
+                    </p>
 
                     <p class="form-group">
                         <input type="submit" class="btn-block border fw mt-3" name="login" value="Login" />
@@ -56,7 +70,7 @@
                     </p>
 
                     <p class="lost_password">
-                        <a href="#">Lost Your Password?</a>
+                        <a href="{{route('forgetpassword')}}">Lost Your Password?</a>
                     </p>
                 </form>
             </div>
@@ -64,33 +78,58 @@
             <!-- Register -->
             <div class="tab-content" id="tab2" style="display: none;">
                 <form method="post" class="register">
-                    <div class="form">
-                        <label for="username2">Username:
+                    @csrf
+                    <p class="form">
+                        <label for="r_firstname">First Name:
                             <i class="ln ln-icon-Male"></i>
-                            <input type="text" class="input-text" name="username" id="username2" value="" />
+                            <input type="text" class="input-text" name="r_firstname" id="r_firstname"
+                                value="{{old('r_firstname')}}" />
                         </label>
-                    </div>
+                        @error('r_firstname')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                        @enderror
+                    </p>
+                    <p class="form">
+                        <label for="r_lastname">Last Name:
+                            <i class="ln ln-icon-Male"></i>
+                            <input type="text" class="input-text" name="r_lastname" id="r_lastname"
+                                value="{{old('r_lastname')}}" />
+                        </label>
+                        @error('r_lastname')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                        @enderror
+                    </p>
 
-                    <div class="form">
-                        <label for="email2">Email Address:
+                    <p class="form">
+                        <label for="r_email">Email Address:
                             <i class="ln ln-icon-Mail"></i>
-                            <input type="text" class="input-text" name="email" id="email2" value="" />
+                            <input type="text" class="input-text" name="r_email" id="r_email"
+                                value="{{old('r_email')}}" />
                         </label>
-                    </div>
+                        @error('r_email')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                        @enderror
+                    </p>
 
-                    <div class="form">
-                        <label for="password1">Password:
+                    <p class="form">
+                        <label for="r_pass">Password:
                             <i class="ln ln-icon-Lock-2"></i>
-                            <input class="input-text" type="password" name="password1" id="password1" />
+                            <input class="input-text" type="password" name="r_pass" id="r_pass" />
                         </label>
-                    </div>
+                        @error('r_pass')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                        @enderror
+                    </p>
 
-                    <div class="form">
-                        <label for="password2">Repeat Password:
+                    <p class="form">
+                        <label for="r_repass">Repeat Password:
                             <i class="ln ln-icon-Lock-2"></i>
-                            <input class="input-text" type="password" name="password2" id="password2" />
+                            <input class="input-text" type="password" name="r_repass" id="r_repass" />
                         </label>
-                    </div>
+                        @error('r_repass')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                        @enderror
+                    </p>
 
                     <p class="form-group">
                         <input type="submit" class="btn-block border fw mt-3" name="register" value="Register" />
