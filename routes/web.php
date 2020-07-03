@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/','HomeController@index')->name('welcome');
+Route::get('/', 'HomeController@index')->name('index');
 
 Route::get('login', 'Auth\LoginController@showLogin')->name('login');
 Route::post('login', 'Auth\LoginController@doLogin');
@@ -18,6 +18,11 @@ Route::get('confirmforgetpass/{email}/{key}', 'Auth\ForgetPasswordController@doC
 
 Route::post('resetpass/{email}/{key}', 'Auth\ForgetPasswordController@resetPass')->name('resetpass');
 
+
+Route::get('notify', function () {
+    return view('notify');
+})->name('notify');
+
 //Route::get('messconfirm', 'ConfirmEmail@messengerConfirmEmail');
 //Route::post('emailconfirm', 'ConfirmEmail@confirmEmail')->name('confirm');
 
@@ -27,5 +32,6 @@ Route::get('profile', 'AuthController@profile')->name('profile');
 
 Route::get('profile/edit', 'AuthController@editProfile')->name('editprofile');
 
-Route::resource('jobs','JobController');
-Route::resource('resumes','ResumeController');
+Route::resource('jobs', 'JobController');
+Route::resource('resumes', 'ResumeController');
+
