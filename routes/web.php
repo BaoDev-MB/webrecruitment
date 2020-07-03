@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/','HomeController@index')->name('welcome');
+Route::get('/', 'HomeController@index')->name('index');
 
 Route::get('login', 'Auth\LoginController@showLogin')->name('login');
 Route::post('login', 'Auth\LoginController@doLogin');
@@ -12,11 +12,16 @@ Route::post('register', 'Auth\RegisterController@doRegister')->name('register');
 Route::get('register', 'Auth\RegisterController@showRegister')->name('register');
 Route::get('confirmemail/{email}/{key}', 'Auth\RegisterController@confirmEmail')->name('confirmemail');
 
-Route::get('forgetpass', 'Auth\ForgetPasswordController@forgetPass')->name('forgetpassword');
+Route::get('forgetpass', 'Auth\ForgetPasswordController@forgetPass')->name('forgetpass');
 Route::post('forgetpass', 'Auth\ForgetPasswordController@doForgetPass')->name('forgetpass');
 Route::get('confirmforgetpass/{email}/{key}', 'Auth\ForgetPasswordController@doConfirmPassword')->name('doconfirmpass');
 
 Route::post('resetpass/{email}/{key}', 'Auth\ForgetPasswordController@resetPass')->name('resetpass');
+
+
+Route::get('notify', function () {
+    return view('pages.notify');
+})->name('notify');
 
 //Route::get('messconfirm', 'ConfirmEmail@messengerConfirmEmail');
 //Route::post('emailconfirm', 'ConfirmEmail@confirmEmail')->name('confirm');
@@ -29,5 +34,5 @@ Route::get('profile/edit', 'AuthController@editProfile')->name('editprofile');
 
 Route::resource('jobs','JobController');
 Route::resource('resumes','ResumeController');
-
-Route::get("test",'JobController@test');
+Route::resource('jobs', 'JobController');
+Route::resource('resumes', 'ResumeController');
