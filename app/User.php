@@ -28,6 +28,16 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function groups()
+    {
+        return $this->belongsToMany(UserGroup::class, 'users_groups');
+    }
+
+    public function cv()
+    {
+        return $this->belongsTo(CurriculumVitae::class);
+    }
+
     // /**
     //  * The attributes that should be cast to native types.
     //  *

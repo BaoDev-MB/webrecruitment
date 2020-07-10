@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use App\Company;
 
 use App\ContactJobType;
-use App\Job;
+use App\Job;    
 use App\JobType;
 use App\Major;
+use App\UserGroup;
+use App\User;
+
+use App\CurriculumVitae;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 class JobController extends Controller
@@ -146,7 +150,7 @@ class JobController extends Controller
 
     public function test()
     {
-        $job = Job::find(1);
-        dd($job->job_types);
+        $cv = CurriculumVitae::find(2);
+        dd($cv->user);
     }
 }
