@@ -34,6 +34,6 @@ Route::get('profile/edit', 'AuthController@editProfile')->name('editprofile');
 
 Route::resource('jobs','JobController');
 Route::resource('resumes','ResumeController');
-Route::resource('jobs', 'JobController');
-Route::resource('resumes', 'ResumeController');
+//Route::resource('jobs', 'JobController');
+//Route::resource('resumes', 'ResumeController');
 Route::get('test','JobController@test');
