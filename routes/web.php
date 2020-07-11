@@ -32,9 +32,12 @@ Route::get('profile', 'AuthController@profile')->name('profile');
 
 Route::get('profile/edit', 'AuthController@editProfile')->name('editprofile');
 
-Route::resource('jobs','JobController');
-Route::resource('resumes','ResumeController');
+Route::resource('jobs', 'JobController');
+Route::resource('resumes', 'ResumeController');
 //Route::resource('jobs', 'JobController');
 //Route::resource('resumes', 'ResumeController');
 Route::get('test','JobController@test');
+
 Route::get('job/apply','ApplyJobController@applyJob')->name('apply');
+
+Route::get('manage-applications', 'ManageApplicationsController@index');
