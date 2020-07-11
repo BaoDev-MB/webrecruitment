@@ -133,7 +133,7 @@
                     </li>
                 </ul>
 
-                <a href="#small-dialog" class="popup-with-zoom-anim button">Apply For This Job</a>
+                <a href="{{--#small-dialog--}}{{route('apply',['id'=>$job->id])}}" class="{{--popup-with-zoom-anim--}} button">Apply For This Job</a>
 
                 <div id="small-dialog" class="zoom-anim-dialog mfp-hide apply-popup">
                     <div class="small-dialog-headline">

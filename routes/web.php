@@ -37,3 +37,4 @@ Route::resource('resumes','ResumeController');
 //Route::resource('jobs', 'JobController');
 //Route::resource('resumes', 'ResumeController');
 Route::get('test','JobController@test');
+Route::get('job/apply','ApplyJobController@applyJob')->name('apply');
