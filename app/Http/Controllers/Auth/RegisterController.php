@@ -45,7 +45,6 @@ class RegisterController extends Controller
 
         $user->random_key = $hash;
         $user->key_time = Carbon::now();
-        $user->group=4;
         $user->save();
 
     return redirect('login')->with('ok', 'Bạn đăng ký thành công vui lòng check Email để kích hoạt tài khoản');
@@ -74,7 +73,7 @@ class RegisterController extends Controller
             //			if ( $now->lt( $kt ) == true ) {
             $u[0]->active = 1;
             $u[0]->random_key = '';
-
+            $u[0]->groups()->attach(4);
             $u[0]->save();
             //			Session::put( 'ok', 123 );
 

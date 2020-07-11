@@ -30,12 +30,12 @@ class User extends Authenticatable
 
     public function groups()
     {
-        return $this->belongsToMany(UserGroup::class, 'users_groups');
+        return $this->belongsToMany(Group::class, 'user_group');
     }
 
     public function cv()
     {
         return $this->belongsTo(CurriculumVitae::class);
     }
-    
+
 }

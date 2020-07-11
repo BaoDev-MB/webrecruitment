@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Group;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -16,7 +17,7 @@ class ResumeController extends Controller
     public function index()
     {
         $u=Session::get('auth');
-        $users = User::all()->where('group',4)->take(8);
+        $users = Group::find(4)->users->take(8);
         return view('pages.resume.browse-resumes',['users'=>$users,'u'=>$u]);
     }
 

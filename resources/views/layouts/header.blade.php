@@ -27,10 +27,10 @@
                                 </li>
                                 @if(session('auth')!=null)
                                     <li>
-                                        @if(session('auth')->group==4)
-                                            <a href="{{route('jobs.index')}}">Browse Jobs</a>
-                                        @elseif(session('auth')->group==3)
+                                        @if(in_array(3,session('group')))
                                             <a href="{{route('resumes.index')}}">Browse Resumes</a>
+                                        @elseif(in_array(4,session('group')))
+                                            <a href="{{route('jobs.index')}}">Browse Jobs</a>
                                         @endif
 
                                     </li>
