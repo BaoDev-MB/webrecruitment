@@ -38,4 +38,8 @@ class User extends Authenticatable
         return $this->belongsTo(CurriculumVitae::class);
     }
 
+    public function jobs()
+    {
+        return $this->belongsToMany(Job::class, 'user_job');
+    }
 }
