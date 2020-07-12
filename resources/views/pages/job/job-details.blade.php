@@ -39,12 +39,7 @@
             </div>
 
             <p class="margin-reset">
-                The Food Service Specialist ensures outstanding customer service
-                is provided to food customers and that all food offerings meet the
-                required stock levels and presentation standards. Beginning your
-                career as a Food Steward will give you a strong foundation in
-                Speedway’s food segment that can make you a vital member of the
-                front line team!
+                {{$job->description}}
             </p>
 
             <br />
@@ -54,43 +49,45 @@
             </p>
 
             <ul class="list-1">
-                <li>
-                    Executing the Food Service program, including preparing and
-                    presenting our wonderful food offerings to hungry customers on
-                    the go!
-                </li>
-                <li>
-                    Greeting customers in a friendly manner and suggestive selling
-                    and sampling items to help increase sales.
-                </li>
-                <li>
-                    Keeping our Store food area looking terrific and ready for our
-                    valued customers by managing product inventory, stocking,
-                    cleaning, etc.
-                </li>
-                <li>
-                    We’re looking for associates who enjoy interacting with people
-                    and working in a fast-paced environment!
-                </li>
+                {{$job->requirements}}
+{{--                <li>--}}
+{{--                    Executing the Food Service program, including preparing and--}}
+{{--                    presenting our wonderful food offerings to hungry customers on--}}
+{{--                    the go!--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    Greeting customers in a friendly manner and suggestive selling--}}
+{{--                    and sampling items to help increase sales.--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    Keeping our Store food area looking terrific and ready for our--}}
+{{--                    valued customers by managing product inventory, stocking,--}}
+{{--                    cleaning, etc.--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    We’re looking for associates who enjoy interacting with people--}}
+{{--                    and working in a fast-paced environment!--}}
+{{--                </li>--}}
             </ul>
 
             <br />
 
-            <h4 class="margin-bottom-10">Job Requirment</h4>
+            <h4 class="margin-bottom-10">Benefits</h4>
 
             <ul class="list-1">
-                <li>
-                    Excellent customer service skills, communication skills, and a
-                    happy, smiling attitude are essential.
-                </li>
-                <li>
-                    Must be available to work required shifts including weekends,
-                    evenings and holidays.
-                </li>
-                <li>
-                    Must be able to perform repeated bending, standing and reaching.
-                </li>
-                <li>Must be able to occasionally lift up to 50 pounds</li>
+                {{$job->benefits}}
+{{--                <li>--}}
+{{--                    Excellent customer service skills, communication skills, and a--}}
+{{--                    happy, smiling attitude are essential.--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    Must be available to work required shifts including weekends,--}}
+{{--                    evenings and holidays.--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    Must be able to perform repeated bending, standing and reaching.--}}
+{{--                </li>--}}
+{{--                <li>Must be able to occasionally lift up to 50 pounds</li>--}}
             </ul>
         </div>
     </div>
