@@ -12,6 +12,9 @@ class LoginController extends Controller
 {
     public function showLogin()
     {
+        //xóa session group cũ
+        Session::forget('auth');
+        Session::forget('group');
         return view('pages.auth');
     }
     public function doLogin(Request $r)

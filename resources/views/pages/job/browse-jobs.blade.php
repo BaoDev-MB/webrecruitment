@@ -24,15 +24,16 @@
         <!-- Recent Jobs -->
         <div class="col-md-8">
             <div class="padding-right">
-
                 <div class="listings-container">
                     @foreach($jobs as $j)
-                        <a href=" {{route('jobs.show',$j->id)}}" class="listing {{$j->job_types[0]->class_css}}">
+                        <a href=" {{route('jobs.show',$j->id)}}"
+                           class="listing {{$j->jobtypes[0]->class_css}} ">
                             <div class="listing-logo">
                                 <img src="images/job-list-logo-01.png" alt="">
                             </div>
                             <div class="listing-title">
-                                <h4> {{$j->job_title}} <span class="listing-type">{{$j->job_types[0]->name}}</span>
+                                <h4> {{$j->job_title}} <span
+                                        class="listing-type"> {{$j->jobtypes[0]->name}}</span>
                                 </h4>
                                 <ul class="listing-icons">
                                     <li><i class="ln ln-icon-Management"></i> {{$j->company->name}}</li>

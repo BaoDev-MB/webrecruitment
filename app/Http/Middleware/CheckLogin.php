@@ -3,9 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Session;
 
-class Authentication
+class CheckLogin
 {
     /**
      * Handle an incoming request.
@@ -16,11 +15,10 @@ class Authentication
      */
     public function handle($request, Closure $next)
     {
-	    if (!$request->session()->exists('auth')) {
-		    // user value cannot be found in session
-		    return redirect('login')->withErrors(['mes'=>"Bạn chưa đăng nhập."]);
-	    }
-	    return $next($request);
-
+        if (!$request->session()->exists('auth')) {
+            // user value cannot be found in session
+            return redirect('login')->withErrors(['mes'=>"Bạn chưa đăng nhập."]);
+        }
+        return $next($request);
     }
 }

@@ -7,6 +7,7 @@ use App\Mail\ActiveAcount;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -18,24 +19,7 @@ class RegisterController extends Controller
     {
         return view('pages.auth', ['register' => '#tab2']);
     }
-
-    public function doRegister(Request $request)
-    {
-        $u = $request->validate([
-            'r_firstname' => 'required|min:3|max:50',
-            'r_lastname' => 'required|min:3|max:50',
-            'r_email' => 'required|email|unique:users,email',
-            'r_pass' => 'required|min:8',
-            'r_repass' => 'required|same:r_pass',
-        ], $this->messages());
-
-//        $user = new User($request->r_firstname,$request->r_lastname,$request->r_email,$request->r_pass);  // chỉnh lại
-        $user = User::create([
-            'first_name' =>$request->r_firstname,
-            'last_name' => $request->r_lastname,
-            'email' => $request->r_email,
-            'password'=>Hash::make($request->input('r_pass')),
-        ]);
+    public function sendEmail(Request $request,User $user){
         $key = openssl_random_pseudo_bytes(200);
         $time = now();
         $hash = md5($key . $time);
@@ -45,12 +29,41 @@ class RegisterController extends Controller
 
         $user->random_key = $hash;
         $user->key_time = Carbon::now();
-        $user->save();
+    }
+    public function doRegister(Request $request)
+    {
 
-    return redirect('login')->with('ok', 'Bạn đăng ký thành công vui lòng check Email để kích hoạt tài khoản');
+        $request->validate([
+            'r_firstname' => 'required|min:3|max:50',
+            'r_lastname' => 'required|min:3|max:50',
+            'r_email' => 'required|email',
+            'r_pass' => 'required|min:8',
+            'r_repass' => 'required|same:r_pass',
+        ], $this->messages());
+        $user =User::where('email', '=',$request->r_email)->first();
+        // email không tồn tại gửi email mơi
+        if($user==null){
+            $user = User::create([
+                'first_name' =>$request->r_firstname,
+                'last_name' => $request->r_lastname,
+                'email' => $request->r_email,
+                'password'=>Hash::make($request->input('r_pass')),
+            ]);
+            $this->sendEmail($request,$user);
+            $user->save();
+            return redirect('login')->with('ok', 'Bạn đăng ký thành công vui lòng check Email để kích hoạt tài khoản');
+        }else{
+            // đã tồn tại active 1 thông báo lỗi
+            if($user->active==1){
+                return redirect()->back()->withErrors(['r_email'=>'Email đã tồn tại!']);
+            }else{
+                // email tồn tại active =0 gửi lại email
+                $this->sendEmail($request,$user);
+                $user->update();
+                return redirect('login')->with('ok', 'Bạn đăng ký thành công vui lòng check Email để kích hoạt tài khoản');
+            }
+        }
 
-
-        return $request->email + " " + $request->password;
     }
 
     public function register()

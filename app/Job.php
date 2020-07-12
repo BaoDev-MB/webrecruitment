@@ -15,7 +15,7 @@ class Job extends Model
     {
         return $this->belongsTo(Company::class);
     }
-    public function  job_types()
+    public function  jobtypes()
     {
         return $this->belongsToMany(JobType::class, 'job_jobtype', 'job_id', 'jobtype_id');
     }
@@ -38,6 +38,8 @@ class Job extends Model
         'location',
         'job_tag',
         'description',
+        'requirements',
+        'benefits',
         'url',
     ];
     //

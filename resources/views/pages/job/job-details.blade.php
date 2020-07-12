@@ -11,7 +11,7 @@
             <span><a href="browse-jobs.html">Restaurant / Food Service</a></span>
             <h2>
                 {{$job->job_title}}
-                <span class="full-time">{{$job->job_types[0]->name}}</span>
+                <span class="full-time">{{$job->jobtypes[0]->name}}</span>
             </h2>
         </div>
 

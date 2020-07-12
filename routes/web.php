@@ -41,3 +41,4 @@ Route::get('test','JobController@test');
 Route::get('job/apply','ApplyJobController@applyJob')->name('apply');
 
 Route::get('manage-applications', 'ManageApplicationsController@index');
+Route::get('companyjobs', 'CompanyJobsControler@showJobs')->name('companyjobs')->middleware('checklogin','checkiscompany');

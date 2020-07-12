@@ -42,4 +42,8 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Job::class, 'user_job');
     }
+    public function company()
+    {
+        return $this->hasOne(Company::class);
+    }
 }
