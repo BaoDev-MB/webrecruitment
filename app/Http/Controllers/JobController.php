@@ -69,7 +69,7 @@ class JobController extends Controller {
         //lấy id company từ user
         $companyid = \session( 'auth' )->company->id;
 
-        $job             = new Job( [
+        $job = new Job( [
             'email'        => $request->get( 'email' ),
             'job_title'    => $request->get( 'job_title' ),
             'job_types'    => $request->get( 'job_type' ),
@@ -87,7 +87,8 @@ class JobController extends Controller {
         $job->active     = 1;
         //save job
         $job->save();
-
+        // thêm liên kết vào bảng mới
+        $job->jobtypes()->attach($request->get( 'job_type' ));
         return redirect( '/companyjobs' )->with( "ok", "Thêm job thành công" );
 
     }
