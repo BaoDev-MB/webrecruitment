@@ -68,9 +68,9 @@
 
                     <!-- Buttons -->
                     <div class="buttons">
-                        <a href="" class="button gray app-link"><i class="fa fa-pencil"></i> Edit</a>
+                        <a href="{{route('jobs.edit',$job->id)}}" class="button "><i class="fa fa-pencil"></i> Edit</a>
 {{--                        <a href="#two-1" class="button gray app-link"><i class="fa fa-sticky-note"></i> Add Note</a>--}}
-                        <a href="" class="button gray app-link"><i class="fa fa-plus-circle"></i> Show Details</a>
+                        <a href="{{route('jobs.show',$job->id)}}" class="button{{-- gray app-link--}}"><i class="fa fa-plus-circle"></i> Show Details</a>
                     </div>
                     <div class="clearfix"></div>
 

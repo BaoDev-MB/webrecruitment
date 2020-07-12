@@ -6,6 +6,7 @@ use App\Company;
 use App\ContactJobType;
 use App\Job;
 use App\JobType;
+use App\Major;
 use App\UserGroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -26,6 +27,7 @@ class JobController extends Controller {
      */
     public function index() {
         $jobs = Job::all()->take( 8 );
+
         return view( 'pages.job.browse-jobs', [ 'jobs' => $jobs ] );
     }
 
@@ -37,8 +39,9 @@ class JobController extends Controller {
     // thêm sửa xóa là của doanh nghiệp
     public function create() {
         $job_types = JobType::all();
+        $majors    = Major::all();
 
-        return view( 'pages.job.add-job', [ 'job_types' => $job_types ] );
+        return view( 'pages.job.add-job', [ 'job_types' => $job_types, 'majors' => $majors ] );
     }
 
     /**
@@ -69,7 +72,7 @@ class JobController extends Controller {
         //lấy id company từ user
         $companyid = \session( 'auth' )->company->id;
 
-        $job = new Job( [
+        $job             = new Job( [
             'email'        => $request->get( 'email' ),
             'job_title'    => $request->get( 'job_title' ),
             'job_types'    => $request->get( 'job_type' ),
@@ -88,7 +91,8 @@ class JobController extends Controller {
         //save job
         $job->save();
         // thêm liên kết vào bảng mới
-        $job->jobtypes()->attach($request->get( 'job_type' ));
+        $job->jobtypes()->attach( $request->get( 'job_type' ) );
+
         return redirect( '/companyjobs' )->with( "ok", "Thêm job thành công" );
 
     }
@@ -114,7 +118,11 @@ class JobController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit( $id ) {
+        $job       = Job::find( $id );
+        $job_types = JobType::all();
+        $majors    = Major::all();
 
+        return view( 'pages.job.edit-job', [ 'job' => $job, 'job_types' => $job_types, 'majors' => $majors ] );
     }
 
     /**
@@ -126,7 +134,42 @@ class JobController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update( Request $request, $id ) {
-        //
+        $request->validate( [
+            'email'        => 'required|email|max:255',
+            'job_title'    => 'required|max:255',
+            'job_type'     => 'required',
+            'majors'       => 'required|unique:majors,name',
+//            'salary'=>'required',
+            'location'     => 'required',
+            'job_tag'      => 'required',
+            'description'  => 'required',
+            'requirements' => 'required',
+            'benefits'     => 'required',
+            'job_url'      => 'required',
+            'date_expire'  => 'required|date',
+        ], $this->messages() );
+        $job               = Job::find( $id );
+        $job->email        = $request->input( 'email' )??'';
+        $job->job_title    = $request->input( 'job_title' )??'';
+        $job->majors_id    = $request->input( 'majors' );
+        $job->salary       = $request->input( 'salary' )??0;
+        $job->location     = $request->input( 'location' )??'';
+        $job->job_tag      = $request->input( 'job_tag' );
+        $job->description  = $request->input( 'description' );
+        $job->requirements = $request->input( 'requirements' );
+        $job->benefits     = $request->input( 'benefits' );
+        $job->url          = $request->input( 'job_url' );
+        $job->date_expire  = $request->input( 'date_expire' );
+        $job->update();
+//        dd($request->post('job_type'));
+        // xoas toan bộ pivot cũ
+        $job->jobtypes()->detach();
+        // addnew pivot mới
+        foreach ( $request->post( 'job_type' ) as $idjobtype ) {
+            $job->jobtypes()->attach( $idjobtype );
+        }
+        return redirect( '/jobs/'.$job->id )->with( "ok", "Chỉnh sửa job thành công" );
+
     }
 
     /**
@@ -165,7 +208,7 @@ class JobController extends Controller {
     }
 
     public function test() {
-        $u = Company::find( 1 );
-        dd( $u->user );
+//        $job = Job::find(6 );
+//        $job->jobtypes()->detach();
     }
 }
