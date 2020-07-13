@@ -6,7 +6,7 @@
         @else
             <header class="{{$transparent ?? ''}} sticky-header">
                 @endif
-
+                
                 <div class="container">
                     <div class="sixteen columns">
 
