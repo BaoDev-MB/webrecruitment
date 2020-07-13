@@ -20,33 +20,34 @@
 
 <!-- Content
     ================================================== -->
-<div class="container">
-    <!-- Recent Jobs -->
-    <div class="col-md-8">
-        <div class="padding-right">
-
-            <div class="listings-container">
-                @foreach($jobs as $j)
-                <a href=" {{route('jobs.show',$j->id)}}" class="listing {{$j->job_types[0]->class_css}}">
-                    <div class="listing-logo">
-                        <img src="images/job-list-logo-01.png" alt="">
-                    </div>
-                    <div class="listing-title">
-                        <h4> {{$j->job_title}} <span class="listing-type">{{$j->job_types[0]->name}}</span>
-                        </h4>
-                        <ul class="listing-icons">
-                            <li><i class="ln ln-icon-Management"></i> {{$j->company->name}}</li>
-                            <li><i class="ln ln-icon-Map2"></i> {{$j->location}}</li>
-                            <li><i class="ln ln-icon-Money-2"></i> ${{$j->salary}}</li>
-                            <li>
-                                <div class="listing-date new">new</div>
-                            </li>
-                        </ul>
-                    </div>
-                </a>
-                @endforeach
-            </div>
-            <div class="clearfix"></div>
+    <div class="container">
+        <!-- Recent Jobs -->
+        <div class="col-md-8">
+            <div class="padding-right">
+                <div class="listings-container">
+                    @foreach($jobs as $j)
+                        <a href=" {{route('jobs.show',$j->id)}}"
+                           class="listing @if($j->jobtypes!=null && count($j->jobtypes)!=0) {{$j->jobtypes[0]->class_css}} @endif ">
+                            <div class="listing-logo">
+                                <img src="images/job-list-logo-01.png" alt="">
+                            </div>
+                            <div class="listing-title">
+                                <h4> {{$j->job_title}} <span
+                                        class="listing-type">@if($j->jobtypes!=null && count($j->jobtypes)!=0) {{$j->jobtypes[0]->name}}@endif</span>
+                                </h4>
+                                <ul class="listing-icons">
+                                    <li><i class="ln ln-icon-Management"></i> {{$j->company->name}}</li>
+                                    <li><i class="ln ln-icon-Map2"></i> {{$j->location}}</li>
+                                    <li><i class="ln ln-icon-Money-2"></i> ${{$j->salary}}</li>
+                                    <li>
+                                        <div class="listing-date new">new</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
+                <div class="clearfix"></div>
 
             <div class="pagination-container">
                 <nav class="pagination">

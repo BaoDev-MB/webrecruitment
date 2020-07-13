@@ -25,12 +25,12 @@
 
                                 <li><a id="current" href="{{route('index')}}">Home</a>
                                 </li>
-                                @if(session('auth')!=null)
+                                @if(session('auth')!=null&&session('group')!=null)
                                     <li>
-                                        @if(session('auth')->group==4)
+                                        @if(in_array(3, session('group')))
+                                            <a href="{{route('companyjobs')}}">Browse Resumes</a>
+                                        @elseif(in_array(4,session('group')))
                                             <a href="{{route('jobs.index')}}">Browse Jobs</a>
-                                        @elseif(session('auth')->group==3)
-                                            <a href="{{route('resumes.index')}}">Browse Resumes</a>
                                         @endif
 
                                     </li>
@@ -55,7 +55,7 @@
                             <ul class="float-right">
                                 @if(Session::has('auth'))
                                     <li>
-                                        <a href="#"><i class="fa fa-user"></i>&nbsp {{Session::get('auth')->first_name}}
+                                        <a href="#"><i class="fa fa-user"></i>{{Session::get('auth')->first_name}}
                                         </a>
                                         <ul>
                                             <li>

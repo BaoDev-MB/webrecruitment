@@ -26,8 +26,9 @@ class CurriculumVitae extends Model
         'more_information',
     ];
 
-    public function users(){
-        return $this->hasOne(User::Class,'cv_id','id');
+    public function users()
+    {
+        return $this->hasOne(User::class, 'cv_id', 'id');
     }
 
     public function user()

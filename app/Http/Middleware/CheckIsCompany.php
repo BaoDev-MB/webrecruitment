@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Session;
 
-class Authentication
+class CheckIsCompany
 {
     /**
      * Handle an incoming request.
@@ -16,11 +16,12 @@ class Authentication
      */
     public function handle($request, Closure $next)
     {
-	    if (!$request->session()->exists('auth')) {
-		    // user value cannot be found in session
-		    return redirect('login')->withErrors(['mes'=>"Bạn chưa đăng nhập."]);
-	    }
-	    return $next($request);
+            //kieemr tra quyen cuar user is doanhnghiep
+            if(!in_array(3,Session::get('group'))){
+                return  redirect()->back()->withErrors(['mes'=>'Bạn không có quyền']);
+            }else {
+                return $next($request);
+            }
 
     }
 }

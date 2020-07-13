@@ -30,7 +30,7 @@ class User extends Authenticatable
 
     public function groups()
     {
-        return $this->belongsToMany(UserGroup::class, 'users_groups');
+        return $this->belongsToMany(Group::class, 'user_group');
     }
 
     public function cv()
@@ -38,12 +38,12 @@ class User extends Authenticatable
         return $this->belongsTo(CurriculumVitae::class);
     }
 
-    // /**
-    //  * The attributes that should be cast to native types.
-    //  *
-    //  * @var array
-    //  */
-    // protected $casts = [
-    //     'email_verified_at' => 'datetime',
-    // ];
+    public function jobs()
+    {
+        return $this->belongsToMany(Job::class, 'user_job');
+    }
+    public function company()
+    {
+        return $this->hasOne(Company::class);
+    }
 }

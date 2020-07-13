@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class JobType extends Model {
+class JobType extends Model
+{
     //
-    public function job() {
-        return $this->belongsToMany( Job::class, 'job_jobtype', 'job_id', 'jobtype_id' );
+    public function jobs()
+    {
+        return $this->belongsToMany(Job::class, 'job_jobtype', 'job_id', 'jobtype_id');
     }
 
     protected $table = 'job_types';
@@ -15,5 +17,4 @@ class JobType extends Model {
         'job_ib',
         'name'
     ];
-
 }

@@ -12,6 +12,9 @@ class LoginController extends Controller
 {
     public function showLogin()
     {
+        //xóa session group cũ
+        Session::forget('auth');
+        Session::forget('group');
         return view('pages.auth');
     }
     public function doLogin(Request $r)
@@ -28,10 +31,16 @@ class LoginController extends Controller
         if (count($users) == 1) {
             $u = $users[0];
             if ($u->email == $r->get('email') && Hash::check($r->get('pass'), $u->password)) {
-                $u = User::select('id', 'first_name', 'group')
+                $u = User::select('id', 'first_name')
                     ->where('id', '=', $u->id)
                     ->where('active', '=', '1')->first();
+                $group=$u->groups;
+                $arrid =[];
+                foreach ($group as $g){
+                    array_push($arrid,$g->id);
+                }
                 Session::put('auth', $u);
+                Session::put('group', $arrid);
                 return redirect('/');
             } else {
                 return redirect()->back()

@@ -114,7 +114,7 @@ class AuthController extends Controller
     public function doLogout()
     {
         Session::forget('auth');
-
+        Session::forget('group');
         return redirect('/');
     }
 

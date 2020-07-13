@@ -35,8 +35,17 @@ Route::get('profile/edit', 'AuthController@editProfile')->name('editprofile');
 
 Route::resource('jobs', 'JobController');
 Route::resource('resumes', 'ResumeController');
+//Route::resource('jobs', 'JobController');
+//Route::resource('resumes', 'ResumeController');
+Route::get('test', 'JobController@test');
+
+Route::get('job/apply', 'ApplyJobController@applyJob')->name('apply');
+
+Route::get('manage-applications', 'ManageApplicationsController@index');
+Route::get('companyjobs', 'CompanyJobsControler@showJobs')->name('companyjobs')->middleware('checklogin', 'checkiscompany');
+
 Route::get('test', 'JobController@test');
 
 Route::get('profile', function () {
     return view('pages.profile');
-})->name('index');
+});

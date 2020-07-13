@@ -48,16 +48,16 @@
                 <div class="padding-right">
                     <h3 class="margin-bottom-25">Recent Jobs</h3>
                     <div class="listings-container">
-                        @if($u==null)
+                        @if($u==null||($group!=null && in_array(4,$group) ))
                             @foreach($jobs as $j)
                                 <a href=" {{route('jobs.show',$j->id)}}"
-                                   class="listing {{$j->job_types[0]->class_css}}">
+                                   class="listing @if($j->jobtypes!=null && count($j->jobtypes)!=0) {{$j->jobtypes[0]->class_css}} @endif ">
                                     <div class="listing-logo">
                                         <img src="images/job-list-logo-01.png" alt="">
                                     </div>
                                     <div class="listing-title">
                                         <h4> {{$j->job_title}} <span
-                                                class="listing-type">{{$j->job_types[0]->name}}</span>
+                                                class="listing-type">@if($j->jobtypes!=null && count($j->jobtypes)!=0) {{$j->jobtypes[0]->name}}@endif</span>
                                         </h4>
                                         <ul class="listing-icons">
                                             <li><i class="ln ln-icon-Management"></i> {{$j->company->name}}</li>
@@ -70,9 +70,10 @@
                                     </div>
                                 </a>
                             @endforeach
-                        @elseif($u->group==3)
+                        @else
+                            @if(in_array(3,$group))
                             <ul class="resumes-list alternative">
-                                @foreach($$users as $j)
+                                @foreach( $users as $j)
                                 <li><a href="resume-page.html">
                                         <img src="images/resumes-list-avatar-01.png" alt="">
                                         <div class="resumes-list-content">
@@ -97,28 +98,7 @@
                                 @endforeach
                             </ul>
                             <div class="clearfix"></div>
-                        @elseif($u->group==4)
-                            @foreach($jobs as $j)
-                                <a href=" {{route('jobs.show',$j->id)}}"
-                                   class="listing {{$j->job_types[0]->class_css}}">
-                                    <div class="listing-logo">
-                                        <img src="images/job-list-logo-01.png" alt="">
-                                    </div>
-                                    <div class="listing-title">
-                                        <h4> {{$j->job_title}} <span
-                                                class="listing-type">{{$j->job_types[0]->name}}</span>
-                                        </h4>
-                                        <ul class="listing-icons">
-                                            <li><i class="ln ln-icon-Management"></i> {{$j->company->name}}</li>
-                                            <li><i class="ln ln-icon-Map2"></i> {{$j->location}}</li>
-                                            <li><i class="ln ln-icon-Money-2"></i> ${{$j->salary}}</li>
-                                            <li>
-                                                <div class="listing-date new">new</div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </a>
-                            @endforeach
+                            @endif
                         @endif
                     </div>
 
