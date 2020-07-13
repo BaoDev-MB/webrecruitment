@@ -50,20 +50,22 @@
                 <div class="clearfix"></div>
 
             <div class="pagination-container">
-                <nav class="pagination">
-                    <ul>
-                        <li><a href="#" class="current-page">1</a></li>
-                        <li><a href="#">2</a></li>
+{{--                <nav class="pagination">--}}
+{{--                    <ul>--}}
+{{--                        <li><a href="#" class="current-page">1</a></li>--}}
+{{--                        <li><a href="#">2</a></li>--}}
 
-                    </ul>
-                </nav>
+{{--                    </ul>--}}
+{{--                </nav>--}}
 
-                <nav class="pagination-next-prev">
-                    <ul>
-                        <li><a href="#" class="prev">Previous</a></li>
-                        <li><a href="#" class="next">Next</a></li>
-                    </ul>
-                </nav>
+{{--                <nav class="pagination-next-prev">--}}
+{{--                    <ul>--}}
+{{--                        <li><a href="#" class="prev">Previous</a></li>--}}
+{{--                        <li><a href="#" class="next">Next</a></li>--}}
+{{--                    </ul>--}}
+{{--                    --}}
+{{--                </nav>--}}
+                {{$jobs->links()}}
             </div>
         </div>
     </div>

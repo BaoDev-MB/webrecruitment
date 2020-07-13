@@ -26,7 +26,7 @@ class JobController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $jobs = Job::all()->take( 8 );
+        $jobs = Job::paginate(2);
 
         return view( 'pages.job.browse-jobs', [ 'jobs' => $jobs ] );
     }
@@ -146,7 +146,7 @@ class JobController extends Controller {
             'requirements' => 'required',
             'benefits'     => 'required',
             'job_url'      => 'required',
-            'date_expire'  => 'required|date',
+            'date_expire'  => 'required|date|date_format:Y-m-d',
         ], $this->messages() );
         $job               = Job::find( $id );
         $job->email        = $request->input( 'email' )??'';
@@ -185,25 +185,23 @@ class JobController extends Controller {
 
     private function messages() {
         return [
-//            'companies.required'=>'Không được để trống tên công ty ',
-//            'companies.unique'=>'Tên công ty không tồn tại',
             'email.required'        => 'Không được để trống Email',
             'email.email'           => 'Email không đúng định dạng',
             'email.max'             => 'Email không được lớn hơn 255 kí tự',
             'job_title.required'    => 'Không được để trống Job title',
             'job_title.max'         => 'Job title không được lớn hơn 255 kí tự',
-            'job_type.required'     => 'Bạn phải chọn Job title',
+            'job_type.required'     => 'Bạn phải chọn Job Type',
             'benefits.required'     => 'Benefits được để trống tên công ty',
             'requirements.required' => 'Requirements được để trống tên công ty',
-            'majors.required'       => 'Không được để trống tên công ty',
-            'majors.unique'         => 'Tên công ty không tồn tại',
+            'majors.required'       => 'Không được để trống tên ngành',
+            'majors.unique'         => 'Tên ngành không tồn tại',
 //            'salary.required'=>'Không được để trống Salary',
             'location.required'     => 'Không được để trống Location',
             'job_tag.required'      => 'Không được để trống Job_Tag',
             'description.required'  => 'Không được để trống description',
             'job_url.required'      => 'Không được để trống Url',
             'date_expire.required'  => 'Không được để trống Date',
-            'date_expire.date'      => 'Không đúng định dạng',
+            'date_expire.date'      => 'Closing Date Không đúng định dạng',
         ];
     }
 
