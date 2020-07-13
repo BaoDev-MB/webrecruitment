@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('index');
 
+
 Route::get('login', 'Auth\LoginController@showLogin')->name('login');
 Route::post('login', 'Auth\LoginController@doLogin');
 
@@ -36,9 +37,15 @@ Route::resource('jobs', 'JobController');
 Route::resource('resumes', 'ResumeController');
 //Route::resource('jobs', 'JobController');
 //Route::resource('resumes', 'ResumeController');
-Route::get('test','JobController@test');
+Route::get('test', 'JobController@test');
 
-Route::get('job/apply','ApplyJobController@applyJob')->name('apply');
+Route::get('job/apply', 'ApplyJobController@applyJob')->name('apply');
 
 Route::get('manage-applications', 'ManageApplicationsController@index');
-Route::get('companyjobs', 'CompanyJobsControler@showJobs')->name('companyjobs')->middleware('checklogin','checkiscompany');
+Route::get('companyjobs', 'CompanyJobsControler@showJobs')->name('companyjobs')->middleware('checklogin', 'checkiscompany');
+
+Route::get('test', 'JobController@test');
+
+Route::get('profile', function () {
+    return view('pages.profile');
+});
