@@ -491,5 +491,106 @@
                 $(dashboardNavContainer).removeClass('active');
             }
         });
+        async  function drawData(array) {
+            $('#listjob').empty();
+            var htmlJob ="";
+            for (let i = 0; i < array.length; i++) {
+                console.log(array[i]['jobtypes'][0]['class_css']);
+                htmlJob+=
+                    "                        <a href=\" http://greentea.com/jobs/"+array[i]['id']+"\"\n" +
+                    "                           class=\"listing "+array[i]['jobtypes'][0]['class_css']+" \">\n" +
+                    "                            <div class=\"listing-logo\">\n" +
+                    "                                <img src=\"images/job-list-logo-01.png\" alt=\"\">\n" +
+                    "                            </div>\n" +
+                    "                            <div class=\"listing-title\">\n" +
+                    "                                <h4> "+array[i]['job_title']+" <span\n" +
+                    "                                        class=\"listing-type\"> "+array[i]['jobtypes'][0]['name']+"</span>\n" +
+                    "                                </h4>\n" +
+                    "                                <ul class=\"listing-icons\">\n" +
+                    "                                    <li><i class=\"ln ln-icon-Management\"></i> "+array[i]['company']['name']+" </li>\n" +
+                    "                                    <li><i class=\"ln ln-icon-Map2\"></i> "+array[i]['location']+"</li>\n" +
+                    "                                    <li><i class=\"ln ln-icon-Money-2\"></i> "+array[i]['salary']+"</li>\n" +
+                    "                                    <li>\n" +
+                    "                                        <div class=\"listing-date new\">new</div>\n" +
+                    "                                    </li>\n" +
+                    "                                </ul>\n" +
+                    "                            </div>\n" +
+                    "                        </a>" ;
+            }
+            $('#listjob').html(htmlJob);
+        }
+        function getPagination(page) {
+            var htmlPagination ="";
+        $.ajax({
+            url: 'http://greentea.com/panigate',
+            type:"GET",
+            data: "page="+page,
+            success: function (data) {
+                console.log(data);
+                var currenPage,last_page,next_page_url,prev_page_url;
+                currenPage= data['current_page'];
+                last_page = data['last_page'];// max page
+                next_page_url=data['next_page_url'];
+                prev_page_url=data['prev_page_url'];
+                console.log(data['data']);
+                drawData(data['data']);
+                for (let i = 0; i <last_page ; i++) {
+                    if(i==0){
+                        if(prev_page_url==null) {
+                            htmlPagination += "<li class=\"page-item " + "disabled" + "\" aria-disabled=\"true\" aria-label=\"« Previous\">\n" +
+                                "      <span class=\"page-link\" aria-hidden=\"true\">‹</span>\n" +
+                                "   </li>"
+                        }else{
+                            htmlPagination += "<li class=\"page-item\">\n" +
+                                "                    <a class=\"page-link\"  data-content=\""+1+"\" rel=\"prev\" aria-label=\"« Previous\">‹</a>\n" +
+                                "                </li>"
+                        }
+                    }
+                    if((i+1)==currenPage){
+                        htmlPagination+="<li class=\"page-item active\" aria-current=\"page\"><span class=\"page-link\">"+currenPage+"</span></li>"
+                    }else{
+                        htmlPagination+="<li class=\"page-item\"><a class=\"page-link\" \">"+(i+1)+"</a></li>"
+                    }
+                    if(i==last_page-1){
+                        if(next_page_url==null) {
+                            htmlPagination += "<li class=\"page-item disabled\" aria-disabled=\"true\" aria-label=\"Next »\">\n" +
+                                "                    <span class=\"page-link\" aria-hidden=\"true\">›</span>\n" +
+                                "                </li>"
+                        }else{
+                            htmlPagination += "<li class=\"page-item\">\n" +
+                                "                    <a class=\"page-link\"  data-content=\""+last_page+"\" rel=\"next\" aria-label=\"Next »\">›</a>\n" +
+                                "                </li>"
+                        }
+                    }
+
+                }
+                $('#paginations').html(htmlPagination);
+            }
+            }
+        );
+        }
+        var pageURL = $(location).attr("href");
+        console.log(pageURL);
+        if (pageURL.indexOf("/jobs")>=0){
+            getPagination(0);
+        }
+        $(document).on('click','.page-link',function () {
+            try {
+                let id =parseInt($(this).text());
+                console.log(id);
+
+                if(isNaN(id)){
+                    console.log($(this).attr("data-content"))
+                    id =parseInt($(this).attr("data-content"));
+                    getPagination(id);
+                }else {
+                    getPagination(id);
+                }
+            }catch (e) {
+                console.log($(this).attr("data-content"));
+                getPagination($(this).attr("data-content"));
+            }
+
+        });
     });
 })(this.jQuery);

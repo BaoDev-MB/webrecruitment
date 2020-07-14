@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\AddUtf8;
 use App\Http\Middleware\CheckIsCompany;
 use App\Http\Middleware\CheckLogin;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -68,7 +69,5 @@ class Kernel extends HttpKernel
         'authentication' => \Illuminate\Auth\Middleware\Authentication::class,
         'checkiscompany'=>CheckIsCompany::class,
         'checklogin'=>CheckLogin::class,
-
-
     ];
 }

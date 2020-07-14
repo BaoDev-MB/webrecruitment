@@ -24,48 +24,41 @@
         <!-- Recent Jobs -->
         <div class="col-md-8">
             <div class="padding-right">
-                <div class="listings-container">
-                    @foreach($jobs as $j)
-                        <a href=" {{route('jobs.show',$j->id)}}"
-                           class="listing @if($j->jobtypes!=null && count($j->jobtypes)!=0) {{$j->jobtypes[0]->class_css}} @endif ">
-                            <div class="listing-logo">
-                                <img src="images/job-list-logo-01.png" alt="">
-                            </div>
-                            <div class="listing-title">
-                                <h4> {{$j->job_title}} <span
-                                        class="listing-type">@if($j->jobtypes!=null && count($j->jobtypes)!=0) {{$j->jobtypes[0]->name}}@endif</span>
-                                </h4>
-                                <ul class="listing-icons">
-                                    <li><i class="ln ln-icon-Management"></i> {{$j->company->name}}</li>
-                                    <li><i class="ln ln-icon-Map2"></i> {{$j->location}}</li>
-                                    <li><i class="ln ln-icon-Money-2"></i> ${{$j->salary}}</li>
-                                    <li>
-                                        <div class="listing-date new">new</div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </a>
-                    @endforeach
+                <div id="listjob" class="listings-container">
+{{--                    @foreach($jobs as $j)--}}
+{{--                        <a href=" {{route('jobs.show',$j->id)}}"--}}
+{{--                           class="listing @if($j->jobtypes!=null && count($j->jobtypes)!=0) {{$j->jobtypes[0]->class_css}} @endif ">--}}
+{{--                            <div class="listing-logo">--}}
+{{--                                <img src="images/job-list-logo-01.png" alt="">--}}
+{{--                            </div>--}}
+{{--                            <div class="listing-title">--}}
+{{--                                <h4> {{$j->job_title}} <span--}}
+{{--                                        class="listing-type">@if($j->jobtypes!=null && count($j->jobtypes)!=0) {{$j->jobtypes[0]->name}}@endif</span>--}}
+{{--                                </h4>--}}
+{{--                                <ul class="listing-icons">--}}
+{{--                                    <li><i class="ln ln-icon-Management"></i> {{$j->company->name}}</li>--}}
+{{--                                    <li><i class="ln ln-icon-Map2"></i> {{$j->location}}</li>--}}
+{{--                                    <li><i class="ln ln-icon-Money-2"></i> ${{$j->salary}}</li>--}}
+{{--                                    <li>--}}
+{{--                                        <div class="listing-date new">new</div>--}}
+{{--                                    </li>--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                    @endforeach--}}
                 </div>
                 <div class="clearfix"></div>
 
-            <div class="pagination-container">
-{{--                <nav class="pagination">--}}
+            <div  class="pagination-container">
+                <nav id="paginations"  class="pagination">
+
 {{--                    <ul>--}}
-{{--                        <li><a href="#" class="current-page">1</a></li>--}}
+{{--                        <li ><a href="#"class="current-page">1</a></li>--}}
 {{--                        <li><a href="#">2</a></li>--}}
 
 {{--                    </ul>--}}
-{{--                </nav>--}}
-
-{{--                <nav class="pagination-next-prev">--}}
-{{--                    <ul>--}}
-{{--                        <li><a href="#" class="prev">Previous</a></li>--}}
-{{--                        <li><a href="#" class="next">Next</a></li>--}}
-{{--                    </ul>--}}
-{{--                    --}}
-{{--                </nav>--}}
-                {{$jobs->links()}}
+                </nav>
+{{--                {{$jobs->links()}}--}}
             </div>
         </div>
     </div>
