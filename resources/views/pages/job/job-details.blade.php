@@ -31,16 +31,19 @@
         <div class="padding-right">
             <!-- Company Info -->
             <div class="company-info">
-                <img src="images/company-logo.png" alt="" />
+            <img src="{{$job->company->image}}" alt="" />
                 <div class="content">
                     <h4>{{$job->company->name}}</h4>
-                    <span><a href="{{$job->company->url}}"><i class="fa fa-link"></i> Website</a></span>
-                    <span><a href="#"><i class="fa fa-twitter"></i> {{$job->company->email}}</a></span>
+                    <span><a href="{{$job->url}}"><i class="fa fa-link"></i> {{$job->url}}</a></span>
+                    <span><a href="#"><i class="ln ln-icon-Email"></i> {{$job->email}}</a></span>
                 </div>
                 <div class="clearfix"></div>
             </div>
-
+            <h4 class="margin-bottom-10">
+                <strong>Description</strong>
+                </h4>
             <p class="margin-reset">
+
                 {{$job->description}}
             </p>
 
@@ -51,6 +54,9 @@
             </p>
 
             <ul class="list-1">
+                <h4 class="margin-bottom-10">
+                    <strong>Requirements</strong>
+                    </h4>
                 {{$job->requirements}}
 {{--                <li>--}}
 {{--                    Executing the Food Service program, including preparing and--}}
@@ -74,7 +80,8 @@
 
             <br />
 
-            <h4 class="margin-bottom-10">Benefits</h4>
+            <h4 class="margin-bottom-10">
+                 <strong>Benefits</strong>      </h4>
 
             <ul class="list-1">
                 {{$job->benefits}}
