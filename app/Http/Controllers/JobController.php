@@ -26,7 +26,7 @@ class JobController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $jobs = Job::paginate(2);
+        $jobs = Job::paginate(8);
 
         return view( 'pages.job.browse-jobs', [ 'jobs' => $jobs ] );
     }

@@ -2,9 +2,10 @@
 
 namespace App;
 
+use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Database\Eloquent\Model;
 
-class JobType extends Model
+class JobType extends Model implements Jsonable
 {
     //
     public function jobs()

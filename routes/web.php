@@ -49,3 +49,4 @@ Route::get('test', 'JobController@test');
 Route::get('profile', function () {
     return view('pages.profile');
 });
+Route::get('panigate', 'JsonPaginationControler@getPage');
