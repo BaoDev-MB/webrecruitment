@@ -3,7 +3,9 @@
 @section('title','Job Details')
 
 @section('content')
-<!-- Titlebar
+
+
+<!-- Titlebar\
 ================================================== -->
 <div id="titlebar" class="photo-bg" style="background: url({{asset('images/job-page-photo.jpg')}})">
     <div class="container">
@@ -130,7 +132,8 @@
                     </li>
                 </ul>
 
-                <a href="{{--#small-dialog--}}{{route('apply',['id'=>$job->id])}}" class="{{--popup-with-zoom-anim--}} button">Apply For This Job</a>
+                <a href="#myModal" class="btn btn-primary trigger-btn" data-toggle="modal">Apply For This Job</a>
+{{--                <a href="--}}{{--#small-dialog--}}{{--{{route('apply',['id'=>$job->id])}}" class="--}}{{--popup-with-zoom-anim--}}{{-- button">Apply For This Job</a>--}}
 
                 <div id="small-dialog" class="zoom-anim-dialog mfp-hide apply-popup">
                     <div class="small-dialog-headline">
@@ -167,5 +170,24 @@
     </div>
     <!-- Widgets / End -->
 </div>
-
+{{--modal apply success job--}}
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+{{--                    <i class="material-icons">&#xE876;</i>--}}
+                    <i class="fa fa-check material-icons text-white" aria-hidden="true"></i>
+                </div>
+                <h4 class="modal-title w-100">Awesome!</h4>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">Your booking has been confirmed. Check your email for detials.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection()
