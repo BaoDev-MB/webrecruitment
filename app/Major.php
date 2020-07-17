@@ -12,4 +12,8 @@ class Major extends Model
     {
         return $this->hasMany(Job::class, 'majors_id','id');
     }
+    public function company()
+    {
+        return $this->hasOne(Company::class);
+    }
 }

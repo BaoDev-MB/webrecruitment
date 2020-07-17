@@ -206,7 +206,7 @@ class JobController extends Controller {
     }
 
     public function test() {
-//        $job = Job::find(6 );
-//        $job->jobtypes()->detach();
+        $job = Company::find(2);
+        dd($job->major );
     }
 }
