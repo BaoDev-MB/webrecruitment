@@ -49,4 +49,5 @@ Route::get('test', 'JobController@test');
 Route::get('profile', function () {
     return view('pages.profile');
 });
-Route::get('panigate', 'JsonPaginationControler@getPage');
+Route::get('panigatejob', 'JsonPaginationControler@getPageForJob')->middleware('checklogin');
+Route::get('panigateresume', 'JsonPaginationControler@getPageForResume')->middleware('checklogin','checkiscompany');

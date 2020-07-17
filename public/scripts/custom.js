@@ -533,7 +533,7 @@
 
         function getPagination(page) {
             $.ajax({
-                    url: './panigate',
+                    url: './panigatejob',
                     type: "GET",
                     data: "page=" + page,
                     success: function (data) {
@@ -547,11 +547,6 @@
                         var tmp = $(pagination)[0].getElementsByTagName('li');
                         $('#paginations').removeClass('hidden');
                         $('#paginations').empty();
-                        console.log($(tmp)[0]);
-                        console.log($(tmp)[1]);
-                        console.log($(tmp)[2]);
-                        console.log($(tmp)[3]);
-                        console.log($(tmp)[4]);
                         for (let i = 0; i < last_page; i++) {
                             var li = $(tmp).clone();
                             if (i == 0) {
@@ -613,7 +608,7 @@
         var pageURL = $(location).attr("href");
         var item;
         var pagination;
-        if (pageURL.indexOf("/jobs") >= 0) {
+        if (pageURL.match(/jobs$/)) {
             item = $('.listing').clone();
             pagination = $('#paginations').clone();
             getPagination(0);
