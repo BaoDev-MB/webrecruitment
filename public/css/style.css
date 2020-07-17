@@ -7185,6 +7185,7 @@ label.upload-btn input[type="file"] {
   float: left;
   padding: 11px 18px;
   margin-right: 18px;
+  color: white !important;
 }
 .small-dialog-content textarea {
   max-width: 100%;
