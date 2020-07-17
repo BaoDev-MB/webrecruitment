@@ -64,31 +64,31 @@ class AuthController extends Controller
 
     public function doSignup(Request $request)
     {
-        Session::put('signup', true);
+        session::put('signup', true);
         $u = $request->validate([
             'name' => 'required|min:3|max:50',
             'email' => 'email|unique:users',
             'pass' => 'required|min:8',
             'repass' => 'required|same:pass',
         ]);
-        Session::forget('signup');
+        session::forget('signup');
 
-        $user = new User($u);
-        $user->password = Hash::make($request->input('pass'));
+        $user = new user($u);
+        $user->password = hash::make($request->input('pass'));
         $key = openssl_random_pseudo_bytes(200);
         $time = now();
         $hash = md5($key . $time);
          echo($request->input('email') ."           " .$hash."     ".$request->input('name') );
 
-         Mail::to($request->input('email'))->send(new ActiveAcount
+         mail::to($request->input('email'))->send(new activeacount
         ($request->input('email'), $hash, $request->input('name')));
 
         $user->random_key = $hash;
-        $user->key_time = Carbon::now();
+        $user->key_time = carbon::now();
         $user->save();
 
 
-        return redirect('login')->with('ok', 'Bạn đăng ký thành công vui lòng check Email để kích hoạt tài khoản');
+        return redirect('login')->with('ok', 'bạn đăng ký thành công vui lòng check email để kích hoạt tài khoản');
     }
 
     public function profile(Request $request)
@@ -98,17 +98,18 @@ class AuthController extends Controller
 
     public function doProfile(Request $request)
     {
-
+//	    $u =Session::get( 'auth' );
         Session::get('auth')->name = $request->name;
         Session::get('auth')->email = $request->email;
         Session::get('auth')->phone = $request->phone;
         Session::get('auth')->studentcode = $request->studentcode;
-        Session::get('auth')->dateofbirth = $request->dateofbirth;
-        Session::get('auth')->gender = $request->gender;
+//        Session::get('auth')->dateofbirth = $request->dateofbirth;
+//        Session::get('auth')->gender = $request->gender;
         Session::get('auth')->save();
         echo $request->input('gender');
+//	    $users = User::all();
 
-        return view('auth.profile');
+        return view('auth.profile' );
     }
 
     public function doLogout()

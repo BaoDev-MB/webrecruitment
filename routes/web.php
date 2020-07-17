@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('index');
 
@@ -27,16 +26,12 @@ Route::get('notify', function () {
 //Route::get('messconfirm', 'ConfirmEmail@messengerConfirmEmail');
 //Route::post('emailconfirm', 'ConfirmEmail@confirmEmail')->name('confirm');
 
-Route::post('profile', 'AuthController@doProfile')->name('profile');
 Route::get('logout', 'AuthController@doLogout')->name('logout');
-Route::get('profile', 'AuthController@profile')->name('profile');
 
-Route::get('profile/edit', 'AuthController@editProfile')->name('editprofile');
 
 Route::resource('jobs', 'JobController');
+
 Route::resource('resumes', 'ResumeController');
-//Route::resource('jobs', 'JobController');
-//Route::resource('resumes', 'ResumeController');
 Route::get('test', 'JobController@test');
 
 Route::get('job/apply', 'ApplyJobController@applyJob')->name('apply');
@@ -44,8 +39,8 @@ Route::get('job/apply', 'ApplyJobController@applyJob')->name('apply');
 Route::get('manage-applications', 'ManageApplicationsController@index');
 Route::get('companyjobs', 'CompanyJobsControler@showJobs')->name('companyjobs')->middleware('checklogin', 'checkiscompany');
 
-Route::get('test', 'JobController@test');
+Route::get('test', 'ProfileController@changePass12');
 
-Route::get('profile', function () {
-    return view('pages.profile');
-});
+Route::resource('profile', 'ProfileController');
+
+//Route::resource('profile/{id}/changePass','ProfileController@changePass');
