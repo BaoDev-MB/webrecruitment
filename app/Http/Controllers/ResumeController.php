@@ -3,22 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Group;
-use App\Job;
-use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
 class ResumeController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   $u= \session('auth');
-        $users = Job::find(\request()->id)->users->take(8);
+    {
+        $u= \session('auth');
+        $majorid = $u->company->major->id;
+        $users = Group::find(4)->users()->where('major_id',$majorid)->get();
         return view('pages.resume.browse-resumes',['users'=>$users,'u'=>$u]);
+
     }
 
     /**

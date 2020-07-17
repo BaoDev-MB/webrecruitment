@@ -44,3 +44,8 @@ Route::get('test', 'ProfileController@changePass12');
 Route::resource('profile', 'ProfileController');
 
 //Route::resource('profile/{id}/changePass','ProfileController@changePass');
+//Route::get('profile', function () {
+//    return view('pages.profile');
+//});
+Route::get('panigatejob', 'JsonPaginationControler@getPageForJob')->middleware('checklogin');
+Route::get('panigateresume', 'JsonPaginationControler@getPageForResume')->middleware('checklogin','checkiscompany');

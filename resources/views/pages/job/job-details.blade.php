@@ -3,7 +3,9 @@
 @section('title','Job Details')
 
 @section('content')
-<!-- Titlebar
+
+
+<!-- Titlebar\
 ================================================== -->
 <div id="titlebar" class="photo-bg" style="background: url({{asset('images/job-page-photo.jpg')}})">
     <div class="container">
@@ -29,16 +31,19 @@
         <div class="padding-right">
             <!-- Company Info -->
             <div class="company-info">
-                <img src="images/company-logo.png" alt="" />
+            <img src="{{$job->company->image}}" alt="" />
                 <div class="content">
                     <h4>{{$job->company->name}}</h4>
-                    <span><a href="{{$job->company->url}}"><i class="fa fa-link"></i> Website</a></span>
-                    <span><a href="#"><i class="fa fa-twitter"></i> {{$job->company->email}}</a></span>
+                    <span><a href="{{$job->url}}"><i class="fa fa-link"></i> {{$job->url}}</a></span>
+                    <span><a href="#"><i class="ln ln-icon-Email"></i> {{$job->email}}</a></span>
                 </div>
                 <div class="clearfix"></div>
             </div>
-
+            <h4 class="margin-bottom-10">
+                <strong>Description</strong>
+                </h4>
             <p class="margin-reset">
+
                 {{$job->description}}
             </p>
 
@@ -49,45 +54,19 @@
             </p>
 
             <ul class="list-1">
+                <h4 class="margin-bottom-10">
+                    <strong>Requirements</strong>
+                    </h4>
                 {{$job->requirements}}
-{{--                <li>--}}
-{{--                    Executing the Food Service program, including preparing and--}}
-{{--                    presenting our wonderful food offerings to hungry customers on--}}
-{{--                    the go!--}}
-{{--                </li>--}}
-{{--                <li>--}}
-{{--                    Greeting customers in a friendly manner and suggestive selling--}}
-{{--                    and sampling items to help increase sales.--}}
-{{--                </li>--}}
-{{--                <li>--}}
-{{--                    Keeping our Store food area looking terrific and ready for our--}}
-{{--                    valued customers by managing product inventory, stocking,--}}
-{{--                    cleaning, etc.--}}
-{{--                </li>--}}
-{{--                <li>--}}
-{{--                    We’re looking for associates who enjoy interacting with people--}}
-{{--                    and working in a fast-paced environment!--}}
-{{--                </li>--}}
             </ul>
 
             <br />
 
-            <h4 class="margin-bottom-10">Benefits</h4>
+            <h4 class="margin-bottom-10">
+                 <strong>Benefits</strong>      </h4>
 
             <ul class="list-1">
                 {{$job->benefits}}
-{{--                <li>--}}
-{{--                    Excellent customer service skills, communication skills, and a--}}
-{{--                    happy, smiling attitude are essential.--}}
-{{--                </li>--}}
-{{--                <li>--}}
-{{--                    Must be available to work required shifts including weekends,--}}
-{{--                    evenings and holidays.--}}
-{{--                </li>--}}
-{{--                <li>--}}
-{{--                    Must be able to perform repeated bending, standing and reaching.--}}
-{{--                </li>--}}
-{{--                <li>Must be able to occasionally lift up to 50 pounds</li>--}}
             </ul>
         </div>
     </div>
@@ -130,7 +109,8 @@
                     </li>
                 </ul>
 
-                <a href="{{--#small-dialog--}}{{route('apply',['id'=>$job->id])}}" class="{{--popup-with-zoom-anim--}} button">Apply For This Job</a>
+                <a href="#myModal" class="btn btn-primary trigger-btn" data-toggle="modal">Apply For This Job</a>
+{{--                <a href="--}}{{--#small-dialog--}}{{--{{route('apply',['id'=>$job->id])}}" class="--}}{{--popup-with-zoom-anim--}}{{-- button">Apply For This Job</a>--}}
 
                 <div id="small-dialog" class="zoom-anim-dialog mfp-hide apply-popup">
                     <div class="small-dialog-headline">
@@ -167,5 +147,24 @@
     </div>
     <!-- Widgets / End -->
 </div>
-
+{{--modal apply success job--}}
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+{{--                    <i class="material-icons">&#xE876;</i>--}}
+                    <i class="fa fa-check material-icons text-white" aria-hidden="true"></i>
+                </div>
+                <h4 class="modal-title w-100">Awesome!</h4>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">Your booking has been confirmed. Check your email for detials.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection()

@@ -26,7 +26,7 @@ class JobController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $jobs = Job::paginate(2);
+        $jobs = Job::paginate(8);
 
         return view( 'pages.job.browse-jobs', [ 'jobs' => $jobs ] );
     }
@@ -206,7 +206,7 @@ class JobController extends Controller {
     }
 
     public function test() {
-//        $job = Job::find(6 );
-//        $job->jobtypes()->detach();
+        $job = Company::find(2);
+        dd($job->major );
     }
 }

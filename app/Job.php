@@ -2,9 +2,10 @@
 
 namespace App;
 
+use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Database\Eloquent\Model;
 
-class Job extends Model
+class Job extends Model implements Jsonable
 {
 
     public function  majors()
@@ -23,6 +24,10 @@ class Job extends Model
     public function users()
     {
         return $this->belongsToMany(User::class, 'user_job');
+    }
+    public function getIsAdminAttribute()
+    {
+        return $this->attributes['jobtype'] == $this->jobtypes;
     }
 
     protected $fillable = [

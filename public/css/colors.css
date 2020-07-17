@@ -149,3 +149,6 @@ table.manage-table tr:hover td,
 .btn-primary:hover{
     background-color: #282828 !important;
 }
+.hidden{
+    display: none !important;
+}

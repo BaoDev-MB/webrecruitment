@@ -26,10 +26,7 @@
         @else
         @include('layouts.header',["transparent" => $ishome ?? ''])
         @endif
-
         @yield('content')
-
-
         @if(($isDashboard ?? '')!='')
         <div id="dashboard">
             @include('layouts.dashboard-nav')
@@ -64,10 +61,10 @@
     <script src="{{asset('scripts/stacktable.js')}}"></script>
     <script src="{{asset('scripts/slick.min.js')}}"></script>
     <script src="{{asset('scripts/headroom.min.js')}}"></script>
-    
+    <script src="{{asset('scripts/bootstrap.min.js')}}"></script>
+    <script src="{{asset('scripts/jquery-3.5.1.min.js')}}"></script>
     @yield('lastScript')
 
-   
 </body>
 
 
