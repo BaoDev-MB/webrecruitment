@@ -23,53 +23,7 @@
         </div>
     </div>
 
-    <!-- Content
-    ================================================== -->
-    <div class="container">
-        <!-- Recent Jobs -->
-        <div class="col-md-8">
-            <div class="padding-right">
-                <!-- Company Info -->
-                <div class="company-info">
-                    <img src="images/company-logo.png" alt=""/>
-                    <div class="content">
-                        <h4>{{$job->company->name}}</h4>
-                        <span><a href="{{$job->company->url}}"><i class="fa fa-link"></i> Website</a></span>
-                        <span><a href="#"><i class="fa fa-twitter"></i> {{$job->company->email}}</a></span>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-
-                <p class="margin-reset">
-                    {{$job->description}}
-                </p>
-
-                <br/>
-                <p>
-                    The <strong>Service Specialist</strong> will have
-                    responsibilities that include:
-                </p>
-
-                <ul class="list-1">
-                    {{$job->requirements}}
-                    {{--                <li>--}}
-                    {{--                    Executing the Food Service program, including preparing and--}}
-                    {{--                    presenting our wonderful food offerings to hungry customers on--}}
-                    {{--                    the go!--}}
-                    {{--                </li>--}}
-                    {{--                <li>--}}
-                    {{--                    Greeting customers in a friendly manner and suggestive selling--}}
-                    {{--                    and sampling items to help increase sales.--}}
-                    {{--                </li>--}}
-                    {{--                <li>--}}
-                    {{--                    Keeping our Store food area looking terrific and ready for our--}}
-                    {{--                    valued customers by managing product inventory, stocking,--}}
-                    {{--                    cleaning, etc.--}}
-                    {{--                </li>--}}
-                    {{--                <li>--}}
-                    {{--                    We’re looking for associates who enjoy interacting with people--}}
-                    {{--                    and working in a fast-paced environment!--}}
-                    {{--                </li>--}}
+<!-- Content
                 </ul>
 
                 <br/>
