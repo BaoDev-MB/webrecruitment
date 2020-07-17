@@ -2,8 +2,7 @@
 
 @section('title', 'Profile')
 
-@section('dashboard-content')
-<!-- Content
+@section('dashboard-content')<!-- Content
 	================================================== -->
 <div class="dashboard-content">
 
@@ -27,7 +26,7 @@
 
     <div class="row">
         <!-- Profile -->
-        <div class="col-lg-6 col-md-12">
+        <div class="col-md-8 col-sm-12">
             <div class="dashboard-list-box margin-top-0">
                 <h4 class="gray">Profile Details</h4>
                 <div class="dashboard-list-box-static">
@@ -77,7 +76,7 @@
         </div>
 
         <!-- Change Password -->
-        <div class="col-lg-6 col-md-12">
+        <div class="col-md-4 col-sm-12">
             <div class="dashboard-list-box margin-top-0">
                 <h4 class="gray">Change Password</h4>
                 <div class="dashboard-list-box-static">
