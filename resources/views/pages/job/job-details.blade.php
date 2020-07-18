@@ -109,8 +109,8 @@
                     </li>
                 </ul>
 
-                <a href="#myModal" class="btn btn-primary trigger-btn" data-toggle="modal">Apply For This Job</a>
-{{--                <a href="--}}{{--#small-dialog--}}{{--{{route('apply',['id'=>$job->id])}}" class="--}}{{--popup-with-zoom-anim--}}{{-- button">Apply For This Job</a>--}}
+{{--                <a href="#myModal" class="btn btn-primary trigger-btn" data-toggle="modal">Apply For This Job</a>--}}
+                <a href=" {{route('apply',['id'=>$job->id])}}" class="{{--popup-with-zoom-anim--}} button">Apply For This Job</a>
 
                 <div id="small-dialog" class="zoom-anim-dialog mfp-hide apply-popup">
                     <div class="small-dialog-headline">
@@ -167,4 +167,15 @@
         </div>
     </div>
 </div>
+
 @endsection()
+@section('lastScript')
+    @if(session('mes') =='ok')
+        <script>
+            $(document).ready(function(){
+                jQuery.noConflict();
+                $('#myModal').modal('show');
+            });
+        </script>
+    @endif
+@endsection

@@ -18,7 +18,7 @@ class ApplyJobController extends Controller {
                 $id = \request()->get( 'id' );
                 \session('auth')->jobs()->attach( $id );
                 // trả về trang hiện tại với message thành công
-                return  redirect()->back()->with('mes','Bạn đã apply thành công');
+                return  redirect()->back()->with('mes','ok');
         }catch (\Throwable $e){
             // đã apply vào job rồi thì thông báo đã apply
             return 'Bạn đã apply';
