@@ -4,21 +4,6 @@
 
 @section('content')
 
-    <!-- Titlebar
-================================================== -->
-    <div id="titlebar">
-        <div class="container">
-            <div class="ten columns">
-                <span>We found 1,412 jobs matching:</span>
-                <h2>Web, Software & IT</h2>
-            </div>
-
-            <div class="six columns">
-                <a href="dashboard-add-job.html" class="button">Post a Job, It’s Free!</a>
-            </div>
-        </div>
-    </div>
-
 <!-- Content
 	================================================== -->
 <div class="container">
@@ -351,11 +336,6 @@
 
         </div>
 
-
-        <!-- Copyrights -->
-        <div class="col-md-12">
-            <div class="copyrights">© 2019 WorkScout. All Rights Reserved.</div>
-        </div>
     </div>
 
 </div>

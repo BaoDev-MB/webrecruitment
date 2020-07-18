@@ -80,4 +80,7 @@
                     </div>
                 </div>
             </header>
-            <div class="clearfix"></div>
+            <div class="clearfix">
+
+            </div>
+    </header>

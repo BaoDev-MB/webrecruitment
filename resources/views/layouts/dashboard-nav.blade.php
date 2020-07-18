@@ -17,8 +17,6 @@
 			<li><a href="dashboard-add-job.html">Add Job</a></li>
 		</ul>
 
-		</ul>
-
 		<ul data-submenu-title="Account">
 			<li><a href="dashboard-my-profile.html">My Profile</a></li>
 			<li><a href="index-2.html">Logout</a></li>

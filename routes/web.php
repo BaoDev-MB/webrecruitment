@@ -41,11 +41,16 @@ Route::get('companyjobs', 'CompanyJobsControler@showJobs')->name('companyjobs')-
 
 Route::get('test', 'ProfileController@changePass12');
 
+//Route::get('dashboar', 'ProfileController@changePass12');
+
 Route::resource('profile', 'ProfileController');
 
 //Route::resource('profile/{id}/changePass','ProfileController@changePass');
-//Route::get('profile', function () {
-//    return view('pages.profile');
-//});
+Route::get('dash', function () {
+    return view('dashboard.student.dashboard-student');
+});
+Route::get('cv', function () {
+    return view('dashboard.student.cv-student');
+});
 Route::get('panigatejob', 'JsonPaginationControler@getPageForJob')->middleware('checklogin');
 Route::get('panigateresume', 'JsonPaginationControler@getPageForResume')->middleware('checklogin','checkiscompany');
