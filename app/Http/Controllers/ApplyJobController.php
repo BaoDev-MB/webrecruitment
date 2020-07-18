@@ -21,7 +21,7 @@ class ApplyJobController extends Controller {
                 return  redirect()->back()->with('mes','ok');
         }catch (\Throwable $e){
             // đã apply vào job rồi thì thông báo đã apply
-            return 'Bạn đã apply';
+            return  redirect()->back()->with('mes','fail');
         }
     }
 }
