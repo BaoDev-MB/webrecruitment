@@ -1,6 +1,7 @@
 <?php
 
 
+
 Route::get('/', 'HomeController@index')->name('index');
 
 
@@ -54,3 +55,10 @@ Route::get('cv', function () {
 });
 Route::get('panigatejob', 'JsonPaginationControler@getPageForJob')->middleware('checklogin');
 Route::get('panigateresume', 'JsonPaginationControler@getPageForResume')->middleware('checklogin','checkiscompany');
+
+// profile doanh nghiep
+//Route::get('profile',function (){
+//   return view("pages.profile-company");
+//});
+
+Route::resource('profileCompany', 'ProfileCompanyController');
